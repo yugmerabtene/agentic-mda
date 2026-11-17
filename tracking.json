@@ -1,0 +1,231 @@
+{
+  "schema_version": "1.0",
+  "mission": {
+    "name": "Lab Metasploitable — reconnaissance, CVE, plan MITRE et rapport",
+    "scope": "Lab local uniquement (VM Metasploitable, réseau privé RFC1918)",
+    "target": {
+      "name": "Metasploitable",
+      "ip": null,
+      "hostname": null,
+      "network": null
+    },
+    "deliverables": [
+      "scripts/recon/",
+      "data/services.json",
+      "data/cves.json",
+      "plans/attack-plan.json",
+      "plans/attack-plan.md",
+      "reports/rapport-final.md",
+      "reports/rapport-final.pdf"
+    ],
+    "created_at": "2026-11-17T00:00:00Z",
+    "updated_at": "2026-11-17T13:51:12Z"
+  },
+  "workflow": {
+    "current_phase": "cadrage",
+    "status": "pending",
+    "next_task": "T01"
+  },
+  "tasks": [
+    {
+      "id": "T01",
+      "phase": "cadrage",
+      "title": "Valider le périmètre, l'IP cible et les critères d'acceptation",
+      "owner": "orchestrator",
+      "status": "pending",
+      "depends_on": [],
+      "acceptance": [
+        "IP cible confirmée par l'utilisateur",
+        "Périmètre lab local confirmé",
+        "Livrables et critères d'acceptation consignés dans tracking.json"
+      ],
+      "artifacts": [],
+      "review": null
+    },
+    {
+      "id": "T02",
+      "phase": "environnement",
+      "title": "Préparer l'environnement de travail et les dépendances",
+      "owner": "dev",
+      "status": "pending",
+      "depends_on": ["T01"],
+      "acceptance": [
+        "Dépendances installées et versions consignées",
+        "Arborescence de travail créée",
+        "Commandes de test disponibles"
+      ],
+      "artifacts": ["requirements.txt"],
+      "review": null
+    },
+    {
+      "id": "T03",
+      "phase": "recon",
+      "title": "Développer le script de reconnaissance paramétrable",
+      "owner": "dev",
+      "status": "pending",
+      "depends_on": ["T02"],
+      "acceptance": [
+        "CLI avec --target, --output, --dry-run, --timeout",
+        "Validation de périmètre (refus des cibles publiques)",
+        "Sorties brutes et normalisées générées",
+        "Tests unitaires et d'intégration au vert"
+      ],
+      "artifacts": ["scripts/recon/", "tests/"],
+      "review": null
+    },
+    {
+      "id": "T04",
+      "phase": "recon",
+      "title": "Revue indépendante du script de reconnaissance",
+      "owner": "reviewer",
+      "status": "pending",
+      "depends_on": ["T03"],
+      "acceptance": [
+        "Critères de T03 vérifiés",
+        "Tests exécutés par le reviewer",
+        "Verdict PASS, CHANGES_REQUIRED ou BLOCKED"
+      ],
+      "artifacts": ["review/"],
+      "review": null
+    },
+    {
+      "id": "T05",
+      "phase": "recon",
+      "title": "Exécuter la reconnaissance sur la VM Metasploitable",
+      "owner": "dev",
+      "status": "pending",
+      "depends_on": ["T04"],
+      "acceptance": [
+        "Scan exécuté uniquement sur la cible autorisée",
+        "Preuves brutes horodatées dans evidence/raw/",
+        "Services normalisés dans data/services.json"
+      ],
+      "artifacts": ["evidence/raw/", "data/services.json"],
+      "review": null
+    },
+    {
+      "id": "T06",
+      "phase": "recon",
+      "title": "Revue indépendante des preuves de reconnaissance",
+      "owner": "reviewer",
+      "status": "pending",
+      "depends_on": ["T05"],
+      "acceptance": [
+        "Preuves brutes intactes et horodatées",
+        "data/services.json traçable vers les preuves",
+        "Périmètre de scan respecté",
+        "Verdict PASS, CHANGES_REQUIRED ou BLOCKED"
+      ],
+      "artifacts": ["review/"],
+      "review": null
+    },
+    {
+      "id": "T07",
+      "phase": "cve",
+      "title": "Corréler les services découverts avec les CVE",
+      "owner": "dev",
+      "status": "pending",
+      "depends_on": ["T06"],
+      "acceptance": [
+        "Chaque CVE possède une source et un niveau de confiance",
+        "Doublons éliminés, faux positifs signalés",
+        "Sortie data/cves.json valide et traçable"
+      ],
+      "artifacts": ["data/cves.json", "scripts/cve/"],
+      "review": null
+    },
+    {
+      "id": "T08",
+      "phase": "cve",
+      "title": "Revue indépendante de la corrélation CVE",
+      "owner": "reviewer",
+      "status": "pending",
+      "depends_on": ["T07"],
+      "acceptance": [
+        "Identifiants CVE vérifiés auprès de sources autoritatives",
+        "Confiance et références cohérentes",
+        "Verdict PASS, CHANGES_REQUIRED ou BLOCKED"
+      ],
+      "artifacts": ["review/"],
+      "review": null
+    },
+    {
+      "id": "T09",
+      "phase": "mitre",
+      "title": "Produire le plan d'attaque MITRE ATT&CK (JSON + Markdown)",
+      "owner": "dev",
+      "status": "pending",
+      "depends_on": ["T08"],
+      "acceptance": [
+        "Techniques ATT&CK valides et cohérentes avec les CVE",
+        "Schéma JSON respecté et plan Markdown aligné",
+        "Préconditions, preuves attendues et risques documentés"
+      ],
+      "artifacts": ["plans/attack-plan.json", "plans/attack-plan.md"],
+      "review": null
+    },
+    {
+      "id": "T10",
+      "phase": "mitre",
+      "title": "Revue indépendante du plan MITRE",
+      "owner": "reviewer",
+      "status": "pending",
+      "depends_on": ["T09"],
+      "acceptance": [
+        "Identifiants de techniques et tactiques vérifiés",
+        "CVE citées présentes dans data/cves.json",
+        "Cohérence JSON / Markdown",
+        "Verdict PASS, CHANGES_REQUIRED ou BLOCKED"
+      ],
+      "artifacts": ["review/"],
+      "review": null
+    },
+    {
+      "id": "T11",
+      "phase": "documentation",
+      "title": "Générer le rapport final Markdown et PDF",
+      "owner": "dev",
+      "status": "pending",
+      "depends_on": ["T10"],
+      "acceptance": [
+        "Rapport sourcé et reproductible",
+        "PDF lisible et complet généré depuis les sources",
+        "Chaîne de génération documentée"
+      ],
+      "artifacts": ["reports/rapport-final.md", "reports/rapport-final.pdf"],
+      "review": null
+    },
+    {
+      "id": "T12",
+      "phase": "revue_finale",
+      "title": "Revue finale des livrables et de la reproductibilité",
+      "owner": "reviewer",
+      "status": "pending",
+      "depends_on": ["T11"],
+      "acceptance": [
+        "Tous les livrables existent et sont cohérents",
+        "Tests et génération rejoués",
+        "Verdict final PASS, CHANGES_REQUIRED ou BLOCKED"
+      ],
+      "artifacts": ["review/"],
+      "review": null
+    },
+    {
+      "id": "T13",
+      "phase": "cloture",
+      "title": "Clôturer la mission et produire la synthèse utilisateur",
+      "owner": "orchestrator",
+      "status": "pending",
+      "depends_on": ["T12"],
+      "acceptance": [
+        "tracking.json finalisé",
+        "Synthèse, risques résiduels et prochaines étapes fournis"
+      ],
+      "artifacts": ["tracking.json"],
+      "review": null
+    }
+  ],
+  "reviews": [],
+  "decisions": [],
+  "blockers": []
+}
