@@ -5,9 +5,9 @@
     "scope": "Lab local uniquement (VM Metasploitable, réseau privé RFC1918)",
     "target": {
       "name": "Metasploitable",
-      "ip": null,
+      "ip": "192.168.56.103",
       "hostname": null,
-      "network": null
+      "network": "192.168.56.0/24"
     },
     "deliverables": [
       "scripts/recon/",
@@ -19,12 +19,12 @@
       "reports/rapport-final.pdf"
     ],
     "created_at": "2026-11-17T00:00:00Z",
-    "updated_at": "2026-11-17T13:51:12Z"
+    "updated_at": "2026-11-19T12:40:00Z"
   },
   "workflow": {
-    "current_phase": "cadrage",
-    "status": "pending",
-    "next_task": "T01"
+    "current_phase": "cloture",
+    "status": "done",
+    "next_task": "T13"
   },
   "tasks": [
     {
@@ -32,200 +32,457 @@
       "phase": "cadrage",
       "title": "Valider le périmètre, l'IP cible et les critères d'acceptation",
       "owner": "orchestrator",
-      "status": "pending",
+      "status": "done",
       "depends_on": [],
       "acceptance": [
         "IP cible confirmée par l'utilisateur",
         "Périmètre lab local confirmé",
         "Livrables et critères d'acceptation consignés dans tracking.json"
       ],
-      "artifacts": [],
+      "artifacts": [
+        "tracking.json (target.ip, target.network)"
+      ],
       "review": null
     },
     {
       "id": "T02",
       "phase": "environnement",
-      "title": "Préparer l'environnement de travail et les dépendances",
+      "title": "Preparer l'environnement de travail et les dependances",
       "owner": "dev",
-      "status": "pending",
-      "depends_on": ["T01"],
+      "status": "done",
+      "depends_on": [
+        "T01"
+      ],
       "acceptance": [
         "Dépendances installées et versions consignées",
         "Arborescence de travail créée",
         "Commandes de test disponibles"
       ],
-      "artifacts": ["requirements.txt"],
-      "review": null
+      "artifacts": [
+        "requirements.txt"
+      ],
+      "review": {
+        "id": "R-002",
+        "reviewer": "reviewer",
+        "verdict": "PASS",
+        "report_path": "review/review-T02-20261119T093525Z.md",
+        "timestamp": "2026-11-19T09:35:25Z"
+      }
     },
     {
       "id": "T03",
       "phase": "recon",
       "title": "Développer le script de reconnaissance paramétrable",
       "owner": "dev",
-      "status": "pending",
-      "depends_on": ["T02"],
+      "status": "done",
+      "depends_on": [
+        "T02"
+      ],
       "acceptance": [
         "CLI avec --target, --output, --dry-run, --timeout",
         "Validation de périmètre (refus des cibles publiques)",
         "Sorties brutes et normalisées générées",
         "Tests unitaires et d'intégration au vert"
       ],
-      "artifacts": ["scripts/recon/", "tests/"],
-      "review": null
+      "artifacts": [
+        "scripts/recon/__init__.py",
+        "scripts/recon/scope.py",
+        "scripts/recon/parser.py",
+        "scripts/recon/recon_scan.py",
+        "tests/unit/test_recon_scope.py",
+        "tests/unit/test_recon_parser.py",
+        "tests/unit/test_recon_cli.py",
+        "tests/integration/test_recon_scan.py",
+        "pytest.ini"
+      ],
+      "review": {
+        "id": "R-004",
+        "reviewer": "reviewer",
+        "verdict": "PASS",
+        "report_path": "review/review-T03-20261119T095250Z.md",
+        "timestamp": "2026-11-19T09:52:50Z"
+      }
     },
     {
       "id": "T04",
       "phase": "recon",
       "title": "Revue indépendante du script de reconnaissance",
       "owner": "reviewer",
-      "status": "pending",
-      "depends_on": ["T03"],
+      "status": "done",
+      "depends_on": [
+        "T03"
+      ],
       "acceptance": [
         "Critères de T03 vérifiés",
         "Tests exécutés par le reviewer",
         "Verdict PASS, CHANGES_REQUIRED ou BLOCKED"
       ],
-      "artifacts": ["review/"],
-      "review": null
-    },
-    {
-      "id": "T05",
-      "phase": "recon",
-      "title": "Exécuter la reconnaissance sur la VM Metasploitable",
-      "owner": "dev",
-      "status": "pending",
-      "depends_on": ["T04"],
-      "acceptance": [
-        "Scan exécuté uniquement sur la cible autorisée",
-        "Preuves brutes horodatées dans evidence/raw/",
-        "Services normalisés dans data/services.json"
+      "artifacts": [
+        "review/review-T03-20261119T095250Z.md"
       ],
-      "artifacts": ["evidence/raw/", "data/services.json"],
-      "review": null
+      "review": {
+        "id": "R-004",
+        "reviewer": "reviewer",
+        "verdict": "PASS",
+        "report_path": "review/review-T03-20261119T095250Z.md",
+        "timestamp": "2026-11-19T09:52:50Z"
+      }
     },
     {
       "id": "T06",
       "phase": "recon",
       "title": "Revue indépendante des preuves de reconnaissance",
       "owner": "reviewer",
-      "status": "pending",
-      "depends_on": ["T05"],
+      "status": "done",
+      "depends_on": [
+        "T05"
+      ],
       "acceptance": [
         "Preuves brutes intactes et horodatées",
         "data/services.json traçable vers les preuves",
         "Périmètre de scan respecté",
         "Verdict PASS, CHANGES_REQUIRED ou BLOCKED"
       ],
-      "artifacts": ["review/"],
-      "review": null
+      "artifacts": [
+        "review/review-T06-20261119T101050Z.md"
+      ],
+      "review": {
+        "id": "R-005",
+        "reviewer": "reviewer",
+        "verdict": "PASS",
+        "report_path": "review/review-T06-20261119T101050Z.md",
+        "timestamp": "2026-11-19T10:10:50Z",
+        "findings_minor": [
+          {
+            "id": "F-001",
+            "severity": "minor",
+            "description": "Le manifeste SHA-256 omet le fichier de log recon-....log (couvre seulement les 3 fichiers nmap)",
+            "correction_attendue": "Ajouter l'empreinte du log au manifeste (non bloquant)"
+          },
+          {
+            "id": "F-002",
+            "severity": "minor",
+            "description": "Le log affiche des horodatages avec suffixe Z alors qu'il s'agit de l'heure locale CET",
+            "correction_attendue": "Cohérencer l'étiquetage horaire (UTC ou fuseau explicite) (non bloquant)"
+          }
+        ]
+      }
     },
     {
-      "id": "T07",
-      "phase": "cve",
-      "title": "Corréler les services découverts avec les CVE",
+      "id": "T05",
+      "phase": "recon",
+      "title": "Exécuter la reconnaissance sur la VM Metasploitable",
       "owner": "dev",
-      "status": "pending",
-      "depends_on": ["T06"],
-      "acceptance": [
-        "Chaque CVE possède une source et un niveau de confiance",
-        "Doublons éliminés, faux positifs signalés",
-        "Sortie data/cves.json valide et traçable"
+      "status": "done",
+      "depends_on": [
+        "T04"
       ],
-      "artifacts": ["data/cves.json", "scripts/cve/"],
-      "review": null
+      "acceptance": [
+        "Scan exécuté uniquement sur la cible autorisée",
+        "Preuves brutes horodatées dans evidence/raw/",
+        "Services normalisés dans data/services.json"
+      ],
+      "artifacts": [
+        "evidence/raw/nmap-192.168.56.103-20261119T095751Z.xml",
+        "evidence/raw/nmap-192.168.56.103-20261119T095751Z.gnmap",
+        "evidence/raw/nmap-192.168.56.103-20261119T095751Z.nmap",
+        "evidence/raw/manifest-192.168.56.103-20261119T095751Z.sha256",
+        "evidence/raw/recon-192.168.56.103-20261119T095751Z.log",
+        "data/services.json"
+      ],
+      "review": {
+        "id": "R-005",
+        "reviewer": "reviewer",
+        "verdict": "PASS",
+        "report_path": "review/review-T06-20261119T101050Z.md",
+        "timestamp": "2026-11-19T10:10:50Z"
+      }
     },
     {
       "id": "T08",
       "phase": "cve",
       "title": "Revue indépendante de la corrélation CVE",
       "owner": "reviewer",
-      "status": "pending",
-      "depends_on": ["T07"],
+      "status": "done",
+      "depends_on": [
+        "T07"
+      ],
       "acceptance": [
         "Identifiants CVE vérifiés auprès de sources autoritatives",
         "Confiance et références cohérentes",
         "Verdict PASS, CHANGES_REQUIRED ou BLOCKED"
       ],
-      "artifacts": ["review/"],
-      "review": null
+      "artifacts": [
+        "review/review-T08-20261119T110003Z.md"
+      ],
+      "review": {
+        "id": "R-007",
+        "reviewer": "reviewer",
+        "verdict": "PASS",
+        "report_path": "review/review-T08-20261119T110003Z.md",
+        "timestamp": "2026-11-19T11:00:03Z"
+      }
     },
     {
       "id": "T09",
       "phase": "mitre",
       "title": "Produire le plan d'attaque MITRE ATT&CK (JSON + Markdown)",
       "owner": "dev",
-      "status": "pending",
-      "depends_on": ["T08"],
+      "status": "done",
+      "depends_on": [
+        "T08"
+      ],
       "acceptance": [
         "Techniques ATT&CK valides et cohérentes avec les CVE",
         "Schéma JSON respecté et plan Markdown aligné",
         "Préconditions, preuves attendues et risques documentés"
       ],
-      "artifacts": ["plans/attack-plan.json", "plans/attack-plan.md"],
-      "review": null
+      "artifacts": [
+        "plans/attack-plan.json",
+        "plans/attack-plan.md",
+        "scripts/mitre/validate_attack_plan.py",
+        "tests/unit/test_attack_plan.py",
+        "tests/integration/test_attack_plan_cli.py"
+      ],
+      "review": {
+        "id": "R-008",
+        "reviewer": "reviewer",
+        "verdict": "PASS",
+        "report_path": "review/review-T10-20261119T121805Z.md",
+        "timestamp": "2026-11-19T12:18:05Z",
+        "findings_minor": [
+          {
+            "id": "F-001",
+            "severity": "minor",
+            "description": "plans/attack-plan.json:129 : expected_evidence de l'étape S2.1 référence data/cves.gov au lieu de data/cves.json (coquille). Le Markdown est correct.",
+            "correction_attendue": "Remplacer cves.gov par cves.json (non bloquant)"
+          }
+        ]
+      }
     },
     {
       "id": "T10",
       "phase": "mitre",
       "title": "Revue indépendante du plan MITRE",
       "owner": "reviewer",
-      "status": "pending",
-      "depends_on": ["T09"],
+      "status": "done",
+      "depends_on": [
+        "T09"
+      ],
       "acceptance": [
         "Identifiants de techniques et tactiques vérifiés",
         "CVE citées présentes dans data/cves.json",
         "Cohérence JSON / Markdown",
         "Verdict PASS, CHANGES_REQUIRED ou BLOCKED"
       ],
-      "artifacts": ["review/"],
-      "review": null
+      "artifacts": [
+        "review/review-T10-20261119T121805Z.md"
+      ],
+      "review": {
+        "id": "R-008",
+        "reviewer": "reviewer",
+        "verdict": "PASS",
+        "report_path": "review/review-T10-20261119T121805Z.md",
+        "timestamp": "2026-11-19T12:18:05Z"
+      }
     },
     {
       "id": "T11",
       "phase": "documentation",
       "title": "Générer le rapport final Markdown et PDF",
       "owner": "dev",
-      "status": "pending",
-      "depends_on": ["T10"],
+      "status": "done",
+      "depends_on": [
+        "T10"
+      ],
       "acceptance": [
         "Rapport sourcé et reproductible",
         "PDF lisible et complet généré depuis les sources",
         "Chaîne de génération documentée"
       ],
-      "artifacts": ["reports/rapport-final.md", "reports/rapport-final.pdf"],
-      "review": null
+      "artifacts": [
+        "reports/rapport-final.md",
+        "reports/rapport-final.pdf",
+        "scripts/report/generate_report.py",
+        "tests/unit/test_report_generate.py"
+      ],
+      "review": {
+        "id": "R-009",
+        "reviewer": "reviewer",
+        "verdict": "PASS",
+        "report_path": "review/review-T12-20261119T123521Z.md",
+        "timestamp": "2026-11-19T12:35:21Z"
+      },
+      "updated_at": "2026-11-19T12:24:40Z"
+    },
+    {
+      "id": "T07",
+      "phase": "cve",
+      "title": "Corréler les services découverts avec les CVE",
+      "owner": "dev",
+      "status": "done",
+      "depends_on": [
+        "T06"
+      ],
+      "acceptance": [
+        "Chaque CVE possède une source et un niveau de confiance",
+        "Doublons éliminés, faux positifs signalés",
+        "Sortie data/cves.json valide et traçable"
+      ],
+      "artifacts": [
+        "data/cves.json",
+        "scripts/cve/__init__.py",
+        "scripts/cve/cve_correlate.py",
+        "tests/unit/test_cve_correlate.py"
+      ],
+      "review": {
+        "id": "R-007",
+        "reviewer": "reviewer",
+        "verdict": "PASS",
+        "report_path": "review/review-T08-20261119T110003Z.md",
+        "timestamp": "2026-11-19T11:00:03Z"
+      }
     },
     {
       "id": "T12",
       "phase": "revue_finale",
       "title": "Revue finale des livrables et de la reproductibilité",
       "owner": "reviewer",
-      "status": "pending",
-      "depends_on": ["T11"],
+      "status": "done",
+      "depends_on": [
+        "T11"
+      ],
       "acceptance": [
         "Tous les livrables existent et sont cohérents",
         "Tests et génération rejoués",
         "Verdict final PASS, CHANGES_REQUIRED ou BLOCKED"
       ],
-      "artifacts": ["review/"],
-      "review": null
+      "artifacts": [
+        "review/review-T12-20261119T123521Z.md"
+      ],
+      "review": {
+        "id": "R-009",
+        "reviewer": "reviewer",
+        "verdict": "PASS",
+        "report_path": "review/review-T12-20261119T123521Z.md",
+        "timestamp": "2026-11-19T12:35:21Z"
+      }
     },
     {
       "id": "T13",
       "phase": "cloture",
       "title": "Clôturer la mission et produire la synthèse utilisateur",
       "owner": "orchestrator",
-      "status": "pending",
-      "depends_on": ["T12"],
+      "status": "done",
+      "depends_on": [
+        "T12"
+      ],
       "acceptance": [
         "tracking.json finalisé",
         "Synthèse, risques résiduels et prochaines étapes fournis"
       ],
-      "artifacts": ["tracking.json"],
+      "artifacts": [
+        "tracking.json"
+      ],
       "review": null
     }
   ],
-  "reviews": [],
-  "decisions": [],
+  "reviews": [
+    {
+      "id": "R-001",
+      "task_id": "T02",
+      "reviewer": "reviewer",
+      "verdict": "CHANGES_REQUIRED",
+      "report_path": "review/review-T02-20261119T120000Z.md",
+      "timestamp": "2026-11-19T12:00:00Z"
+    },
+    {
+      "id": "R-002",
+      "task_id": "T02",
+      "reviewer": "reviewer",
+      "verdict": "PASS",
+      "report_path": "review/review-T02-20261119T093525Z.md",
+      "timestamp": "2026-11-19T09:35:25Z"
+    },
+    {
+      "id": "R-003",
+      "task_id": "T03",
+      "reviewer": "reviewer",
+      "verdict": "CHANGES_REQUIRED",
+      "report_path": "review/review-T03-20261119T094654Z.md",
+      "timestamp": "2026-11-19T09:46:54Z"
+    },
+    {
+      "id": "R-004",
+      "task_id": "T03",
+      "reviewer": "reviewer",
+      "verdict": "PASS",
+      "report_path": "review/review-T03-20261119T095250Z.md",
+      "timestamp": "2026-11-19T09:52:50Z"
+    },
+    {
+      "id": "R-005",
+      "task_id": "T06",
+      "reviewer": "reviewer",
+      "verdict": "PASS",
+      "report_path": "review/review-T06-20261119T101050Z.md",
+      "timestamp": "2026-11-19T10:10:50Z"
+    },
+    {
+      "id": "R-006",
+      "task_id": "T07",
+      "reviewer": "reviewer",
+      "verdict": "CHANGES_REQUIRED",
+      "report_path": "review/review-T08-20261119T103932Z.md",
+      "timestamp": "2026-11-19T10:39:32Z"
+    },
+    {
+      "id": "R-007",
+      "task_id": "T07",
+      "reviewer": "reviewer",
+      "verdict": "PASS",
+      "report_path": "review/review-T08-20261119T110003Z.md",
+      "timestamp": "2026-11-19T11:00:03Z"
+    },
+    {
+      "id": "R-008",
+      "task_id": "T09",
+      "reviewer": "reviewer",
+      "verdict": "PASS",
+      "report_path": "review/review-T10-20261119T121805Z.md",
+      "timestamp": "2026-11-19T12:18:05Z"
+    },
+    {
+      "id": "R-009",
+      "task_id": "T11",
+      "reviewer": "reviewer",
+      "verdict": "PASS",
+      "report_path": "review/review-T12-20261119T123521Z.md",
+      "timestamp": "2026-11-19T12:35:21Z"
+    }
+  ],
+  "decisions": [
+    {
+      "id": "D-001",
+      "task_id": "T01",
+      "type": "target_confirmation",
+      "content": "Cible confirmée : IP 192.168.56.101, réseau 192.168.56.0/24 (RFC1918). Périmètre : reconnaissance + exploitation contrôlée. Chaque action intrusive (exploit, brute force, persistance, exfiltration) requiert une confirmation explicite utilisateur.",
+      "timestamp": "2026-11-19T00:00:00Z"
+    },
+    {
+      "id": "D-002",
+      "task_id": "T02",
+      "type": "environment_versions",
+      "content": "Python 3.12.3, venv .venv cree (sans sudo). Dependances installees : pytest 8.3.3, requests 2.32.3, jsonschema 4.23.0, ruff 0.9.2, weasyprint 70.0 (requirements.txt). weasyprint importe depuis le venv et weasyprint --version renvoie 70.0 (OK, chaine PDF T11). pandoc (ABSENT, non requis car weasyprint disponible). searchsploit (ABSENT, non installable sans sudo et sans paquet PyPI officiel). Aucun scan sur 192.168.56.101 dans cette Tache.",
+      "timestamp": "2026-11-19T09:33:18Z"
+    },
+    {
+      "id": "D-003",
+      "task_id": "T01",
+      "type": "target_ip_correction",
+      "content": "Correction de l'IP cible : 192.168.56.101 est Kali (attaquant), 192.168.56.103 est Metasploitable2 (cible). L'IP cible est corrigée de 192.168.56.101 à 192.168.56.103 conformément à configs/lab-access.md et à la confirmation utilisateur. Le réseau reste 192.168.56.0/24.",
+      "timestamp": "2026-11-19T09:55:00Z"
+    }
+  ],
   "blockers": []
 }

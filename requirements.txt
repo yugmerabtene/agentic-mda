@@ -1,0 +1,19 @@
+# Dépendances Python — Lab Metasploitable (mission T02)
+# Python 3.11+. Versions épinglées après installation dans .venv.
+
+# Framework de tests unitaires / d'intégration (pytest avec marqueurs integration/e2e)
+pytest==8.3.3
+
+# Client HTTP pour l'API NVD 2.0 (corrélation CVE, phase T07)
+requests==2.32.3
+
+# Validation des schémas JSON (services.json, cves.json, attack-plan.json)
+jsonschema==4.23.0
+
+# Lintage et formatage du code Python (ruff, recommandé par le skill dev)
+ruff==0.9.2
+
+# Generation PDF du rapport final (livrable T11).
+# weasyprint convertit le HTML issu du Markdown en PDF.
+# Epingle a la version disponible dans l'environnement (70.0).
+weasyprint==70.0

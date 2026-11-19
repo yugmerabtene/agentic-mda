@@ -1,0 +1,163 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-11-19T09:58:03Z",
+  "target": {
+    "ip": "192.168.56.103",
+    "hostname": null,
+    "os": null
+  },
+  "services": [
+    {
+      "port": 21,
+      "protocol": "tcp",
+      "state": "open",
+      "service": "ftp",
+      "product": "vsftpd",
+      "version": "2.3.4",
+      "cpe": [
+        "cpe:/a:vsftpd:vsftpd:2.3.4"
+      ],
+      "extra_info": {},
+      "source": "evidence/raw/nmap-192.168.56.103-20261119T095751Z.xml"
+    },
+    {
+      "port": 22,
+      "protocol": "tcp",
+      "state": "open",
+      "service": "ssh",
+      "product": "OpenSSH",
+      "version": "4.7p1 Debian 8ubuntu1",
+      "cpe": [
+        "cpe:/a:openbsd:openssh:4.7p1",
+        "cpe:/o:linux:linux_kernel"
+      ],
+      "extra_info": {
+        "extrainfo": "protocol 2.0"
+      },
+      "source": "evidence/raw/nmap-192.168.56.103-20261119T095751Z.xml"
+    },
+    {
+      "port": 23,
+      "protocol": "tcp",
+      "state": "open",
+      "service": "telnet",
+      "product": "Linux telnetd",
+      "version": null,
+      "cpe": [
+        "cpe:/o:linux:linux_kernel"
+      ],
+      "extra_info": {},
+      "source": "evidence/raw/nmap-192.168.56.103-20261119T095751Z.xml"
+    },
+    {
+      "port": 25,
+      "protocol": "tcp",
+      "state": "open",
+      "service": "smtp",
+      "product": "Postfix smtpd",
+      "version": null,
+      "cpe": [
+        "cpe:/a:postfix:postfix"
+      ],
+      "extra_info": {},
+      "source": "evidence/raw/nmap-192.168.56.103-20261119T095751Z.xml"
+    },
+    {
+      "port": 80,
+      "protocol": "tcp",
+      "state": "open",
+      "service": "http",
+      "product": "Apache httpd",
+      "version": "2.2.8",
+      "cpe": [
+        "cpe:/a:apache:http_server:2.2.8"
+      ],
+      "extra_info": {
+        "extrainfo": "(Ubuntu) DAV/2"
+      },
+      "source": "evidence/raw/nmap-192.168.56.103-20261119T095751Z.xml"
+    },
+    {
+      "port": 111,
+      "protocol": "tcp",
+      "state": "open",
+      "service": "rpcbind",
+      "product": null,
+      "version": "2",
+      "cpe": [],
+      "extra_info": {
+        "extrainfo": "RPC #100000"
+      },
+      "source": "evidence/raw/nmap-192.168.56.103-20261119T095751Z.xml"
+    },
+    {
+      "port": 139,
+      "protocol": "tcp",
+      "state": "open",
+      "service": "netbios-ssn",
+      "product": "Samba smbd",
+      "version": "3.X - 4.X",
+      "cpe": [
+        "cpe:/a:samba:samba"
+      ],
+      "extra_info": {
+        "extrainfo": "workgroup: WORKGROUP"
+      },
+      "source": "evidence/raw/nmap-192.168.56.103-20261119T095751Z.xml"
+    },
+    {
+      "port": 445,
+      "protocol": "tcp",
+      "state": "open",
+      "service": "netbios-ssn",
+      "product": "Samba smbd",
+      "version": "3.X - 4.X",
+      "cpe": [
+        "cpe:/a:samba:samba"
+      ],
+      "extra_info": {
+        "extrainfo": "workgroup: WORKGROUP"
+      },
+      "source": "evidence/raw/nmap-192.168.56.103-20261119T095751Z.xml"
+    },
+    {
+      "port": 512,
+      "protocol": "tcp",
+      "state": "open",
+      "service": "exec",
+      "product": "netkit-rsh rexecd",
+      "version": null,
+      "cpe": [
+        "cpe:/a:netkit:netkit",
+        "cpe:/o:linux:linux_kernel"
+      ],
+      "extra_info": {},
+      "source": "evidence/raw/nmap-192.168.56.103-20261119T095751Z.xml"
+    },
+    {
+      "port": 513,
+      "protocol": "tcp",
+      "state": "open",
+      "service": "login",
+      "product": "OpenBSD or Solaris rlogind",
+      "version": null,
+      "cpe": [],
+      "extra_info": {},
+      "source": "evidence/raw/nmap-192.168.56.103-20261119T095751Z.xml"
+    },
+    {
+      "port": 514,
+      "protocol": "tcp",
+      "state": "open",
+      "service": "shell",
+      "product": "Netkit rshd",
+      "version": null,
+      "cpe": [
+        "cpe:/a:netkit:netkit_rsh"
+      ],
+      "extra_info": {},
+      "source": "evidence/raw/nmap-192.168.56.103-20261119T095751Z.xml"
+    }
+  ],
+  "unmatched": []
+}

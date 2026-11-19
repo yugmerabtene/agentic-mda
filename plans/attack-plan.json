@@ -1,0 +1,611 @@
+{
+  "schema_version": "1.0",
+  "mission": "Lab Metasploitable — plan d'attaque MITRE ATT&CK",
+  "target": {
+    "ip": "192.168.56.103",
+    "name": "Metasploitable2",
+    "network": "192.168.56.0/24"
+  },
+  "generated_at": "2026-11-19T12:08:33Z",
+  "attack_version": "v20.1 (verifie sur attack.mitre.org)",
+  "authorization": {
+    "scope": "Lab local uniquement, cible 192.168.56.103 (RFC1918). Aucune action hors perimetre.",
+    "confirmed_by": "utilisateur",
+    "confirmed_at": "2026-11-19T00:00:00Z",
+    "intrusive_actions_require_approval": true,
+    "note": "Les etapes marquees requires_user_approval: true ne doivent pas etre executees sans accord explicite consigne."
+  },
+  "phases": [
+    {
+      "id": "P1",
+      "name": "Reconnaissance",
+      "tactic": {
+        "id": "TA0043",
+        "name": "Reconnaissance"
+      },
+      "steps": [
+        {
+          "id": "S1.1",
+          "objective": "Detecter les services et leurs versions exposes sur la cible, puis corréler avec les CVE connues (donnees de T05/T07).",
+          "technique": {
+            "id": "T1595.002",
+            "name": "Vulnerability Scanning"
+          },
+          "services": [
+            "21/tcp",
+            "22/tcp",
+            "23/tcp",
+            "25/tcp",
+            "80/tcp",
+            "111/tcp",
+            "139/tcp",
+            "445/tcp",
+            "512/tcp",
+            "513/tcp",
+            "514/tcp"
+          ],
+          "cves": [
+            "CVE-1999-0236",
+            "CVE-2000-1195",
+            "CVE-2005-0337",
+            "CVE-2005-3630",
+            "CVE-2006-4625",
+            "CVE-2007-0452",
+            "CVE-2007-2444",
+            "CVE-2007-2446",
+            "CVE-2007-2447",
+            "CVE-2008-4314",
+            "CVE-2008-5161",
+            "CVE-2009-1888",
+            "CVE-2009-2906",
+            "CVE-2010-0728",
+            "CVE-2010-0926",
+            "CVE-2011-2523",
+            "CVE-2020-8797",
+            "CVE-2021-27171",
+            "CVE-2022-39028",
+            "CVE-2023-51764"
+          ],
+          "tools": [
+            "nmap"
+          ],
+          "preconditions": [
+            "Cible 192.168.56.103 confirmee dans tracking.json (reseau RFC1918)",
+            "Autorisation lab valide, perimetre reconnaissance uniquement"
+          ],
+          "command": "nmap -Pn -sV -p- --open <target> -oX evidence/raw/nmap-<target>-<timestamp_utc>.xml",
+          "expected_evidence": [
+            "evidence/raw/nmap-192.168.56.103-20261119T095751Z.xml",
+            "data/services.json",
+            "data/cves.json"
+          ],
+          "detection": [
+            "Journaux de pare-feu/hote (scans de ports)",
+            "Alertes IDS sur activite de scan de vulnerabilites"
+          ],
+          "risk": "low",
+          "stop_conditions": [
+            "Cible inattendue ou hors perimetre (non RFC1918 lab)",
+            "Service non liste dans data/services.json"
+          ],
+          "requires_user_approval": false
+        }
+      ]
+    },
+    {
+      "id": "P2",
+      "name": "Initial Access",
+      "tactic": {
+        "id": "TA0001",
+        "name": "Initial Access"
+      },
+      "steps": [
+        {
+          "id": "S2.1",
+          "objective": "Acceder au serveur web via une application publique exposee (Apache httpd 2.2.8 sur 80/tcp).",
+          "technique": {
+            "id": "T1190",
+            "name": "Exploit Public-Facing Application"
+          },
+          "services": [
+            "80/tcp"
+          ],
+          "cves": [
+            "CVE-1999-0236",
+            "CVE-2005-3630",
+            "CVE-2006-4625"
+          ],
+          "tools": [
+            "searchsploit",
+            "navigateur web / client HTTP"
+          ],
+          "preconditions": [
+            "Phase P1 terminee, service 80/tcp confirme",
+            "Accord utilisateur explicite pour action intrusive (exploitation)"
+          ],
+          "command": "searchsploit --json apache 2.2.8 ; verification manuelle sur la cible uniquement si approuve",
+          "expected_evidence": [
+            "evidence/raw/nmap-192.168.56.103-20261119T095751Z.xml",
+            "data/cves.gov (entrees CVE-1999-0236, CVE-2005-3630, CVE-2006-4625)"
+          ],
+          "detection": [
+            "Journaux Apache (access.log/error.log) requetes anomales",
+            "Alertes WAF/IDS sur exploitation d'application web"
+          ],
+          "risk": "high",
+          "stop_conditions": [
+            "Service 80/tcp indisponible ou version differente",
+            "Absence d'accord utilisateur pour l'exploitation"
+          ],
+          "requires_user_approval": true
+        },
+        {
+          "id": "S2.2",
+          "objective": "Exploiter le service FTP vsftpd 2.3.4 (21/tcp) contenant une porte-arriere ouvrant un shell sur 6200/tcp.",
+          "technique": {
+            "id": "T1210",
+            "name": "Exploitation of Remote Services"
+          },
+          "services": [
+            "21/tcp"
+          ],
+          "cves": [
+            "CVE-2011-2523"
+          ],
+          "tools": [
+            "searchsploit",
+            "netcat"
+          ],
+          "preconditions": [
+            "Phase P1 terminee, service 21/tcp vsftpd 2.3.4 confirme",
+            "Accord utilisateur explicite pour action intrusive"
+          ],
+          "command": "searchsploit --json vsftpd 2.3.4 ; connexion sur 6200/tcp uniquement si approuve",
+          "expected_evidence": [
+            "evidence/raw/nmap-192.168.56.103-20261119T095751Z.xml",
+            "data/cves.json (entree CVE-2011-2523)"
+          ],
+          "detection": [
+            "Connexion entrante inattendue sur 6200/tcp",
+            "Journaux vsftpd/xinetd"
+          ],
+          "risk": "critical",
+          "stop_conditions": [
+            "Version vsftpd differente de 2.3.4",
+            "Absence d'accord utilisateur pour l'exploitation"
+          ],
+          "requires_user_approval": true
+        },
+        {
+          "id": "S2.3",
+          "objective": "Exploiter les services SMB/CIFS Samba (139/tcp, 445/tcp) via MS-RPC pour executer du code a distance.",
+          "technique": {
+            "id": "T1210",
+            "name": "Exploitation of Remote Services"
+          },
+          "services": [
+            "139/tcp",
+            "445/tcp"
+          ],
+          "cves": [
+            "CVE-2007-2446",
+            "CVE-2007-2447"
+          ],
+          "tools": [
+            "searchsploit",
+            "client SMB (smbclient)"
+          ],
+          "preconditions": [
+            "Phase P1 terminee, services 139/tcp et 445/tcp Samba confirmes",
+            "Accord utilisateur explicite pour action intrusive"
+          ],
+          "command": "searchsploit --json samba 3.x ; verification des appels MS-RPC uniquement si approuve",
+          "expected_evidence": [
+            "evidence/raw/nmap-192.168.56.103-20261119T095751Z.xml",
+            "data/cves.json (entrees CVE-2007-2446, CVE-2007-2447)"
+          ],
+          "detection": [
+            "Journaux Samba (log.smbd) requetes MS-RPC anomales",
+            "Alertes IDS sur exploitation SMB"
+          ],
+          "risk": "high",
+          "stop_conditions": [
+            "Version Samba hors plage affectee (3.0.0-3.0.25rc3)",
+            "Absence d'accord utilisateur pour l'exploitation"
+          ],
+          "requires_user_approval": true
+        },
+        {
+          "id": "S2.4",
+          "objective": "Acceder via le service telnetd (23/tcp) : contournement d'authentification ou degradation de service.",
+          "technique": {
+            "id": "T1210",
+            "name": "Exploitation of Remote Services"
+          },
+          "services": [
+            "23/tcp"
+          ],
+          "cves": [
+            "CVE-2000-1195",
+            "CVE-2020-8797",
+            "CVE-2021-27171",
+            "CVE-2022-39028"
+          ],
+          "tools": [
+            "searchsploit",
+            "client telnet"
+          ],
+          "preconditions": [
+            "Phase P1 terminee, service 23/tcp telnetd confirme",
+            "Accord utilisateur explicite pour action intrusive"
+          ],
+          "command": "searchsploit --json telnetd ; tentative uniquement si approuve",
+          "expected_evidence": [
+            "evidence/raw/nmap-192.168.56.103-20261119T095751Z.xml",
+            "data/cves.json (entrees CVE-2000-1195, CVE-2020-8797, CVE-2021-27171, CVE-2022-39028)"
+          ],
+          "detection": [
+            "Journaux telnetd/inetd echecs ou boucles de connexion",
+            "Alertes IDS sur trafic telnet anormal"
+          ],
+          "risk": "high",
+          "stop_conditions": [
+            "Service 23/tcp indisponible",
+            "Absence d'accord utilisateur pour l'exploitation"
+          ],
+          "requires_user_approval": true
+        }
+      ]
+    },
+    {
+      "id": "P3",
+      "name": "Execution",
+      "tactic": {
+        "id": "TA0002",
+        "name": "Execution"
+      },
+      "steps": [
+        {
+          "id": "S3.1",
+          "objective": "Executer des commandes sur la cible via le shell obtenu (porte-arriere vsftpd ou script de noms d'utilisateur Samba).",
+          "technique": {
+            "id": "T1059",
+            "name": "Command and Scripting Interpreter"
+          },
+          "services": [
+            "21/tcp",
+            "139/tcp",
+            "445/tcp"
+          ],
+          "cves": [
+            "CVE-2011-2523",
+            "CVE-2007-2447"
+          ],
+          "tools": [
+            "shell distant",
+            "interpreteur de commandes"
+          ],
+          "preconditions": [
+            "Accent initial obtenu (P2 S2.2 ou S2.3 reussi)",
+            "Accord utilisateur explicite pour execution de commandes"
+          ],
+          "command": "execution de commandes via le shell obtenu (a definir selon l'acces reussi)",
+          "expected_evidence": [
+            "data/cves.json (entrees CVE-2011-2523, CVE-2007-2447)",
+            "compte-rendu de session (si autorise)"
+          ],
+          "detection": [
+            "Processus shells inattendus sur la cible",
+            "Journaux d'execution de commandes"
+          ],
+          "risk": "high",
+          "stop_conditions": [
+            "Perte de l'acces distant",
+            "Absence d'accord utilisateur pour l'execution"
+          ],
+          "requires_user_approval": true
+        }
+      ]
+    },
+    {
+      "id": "P4",
+      "name": "Privilege Escalation",
+      "tactic": {
+        "id": "TA0004",
+        "name": "Privilege Escalation"
+      },
+      "steps": [
+        {
+          "id": "S4.1",
+          "objective": "Elever les privilèges sur la cible via les vulnérabilités Samba (translation SID/nom, ACL, capacités, traversal de liens symboliques).",
+          "technique": {
+            "id": "T1068",
+            "name": "Exploitation for Privilege Escalation"
+          },
+          "services": [
+            "139/tcp",
+            "445/tcp"
+          ],
+          "cves": [
+            "CVE-2007-2444",
+            "CVE-2009-1888",
+            "CVE-2010-0728",
+            "CVE-2010-0926"
+          ],
+          "tools": [
+            "searchsploit",
+            "client SMB"
+          ],
+          "preconditions": [
+            "Acces utilisateur sur la cible (P3 reussi)",
+            "Accord utilisateur explicite pour elevation de privileges"
+          ],
+          "command": "searchsploit --json samba privilege escalation ; exploitation uniquement si approuve",
+          "expected_evidence": [
+            "data/cves.json (entrees CVE-2007-2444, CVE-2009-1888, CVE-2010-0728, CVE-2010-0926)"
+          ],
+          "detection": [
+            "Changements de compte/privilèges dans les journaux Samba et systeme",
+            "Alertes EDR sur elevation de privileges"
+          ],
+          "risk": "high",
+          "stop_conditions": [
+            "Version Samba non vulnerable",
+            "Absence d'accord utilisateur pour l'elevation"
+          ],
+          "requires_user_approval": true
+        }
+      ]
+    },
+    {
+      "id": "P5",
+      "name": "Credential Access",
+      "tactic": {
+        "id": "TA0006",
+        "name": "Credential Access"
+      },
+      "steps": [
+        {
+          "id": "S5.1",
+          "objective": "Tenter l'acces aux identifiants via le service SSH (22/tcp) : force brute sur comptes faibles et analyse du chiffrement CBC (CVE-2008-5161).",
+          "technique": {
+            "id": "T1110",
+            "name": "Brute Force"
+          },
+          "services": [
+            "22/tcp"
+          ],
+          "cves": [
+            "CVE-2008-5161"
+          ],
+          "tools": [
+            "searchsploit",
+            "outil de force brute (a definir)"
+          ],
+          "preconditions": [
+            "Phase P1 terminee, service 22/tcp OpenSSH 4.7p1 confirme",
+            "Accord utilisateur explicite pour force brute"
+          ],
+          "command": "searchsploit --json openssh 4.7 ; force brute uniquement si approuve et avec liste de mots de passe restreinte",
+          "expected_evidence": [
+            "evidence/raw/nmap-192.168.56.103-20261119T095751Z.xml",
+            "data/cves.json (entree CVE-2008-5161)"
+          ],
+          "detection": [
+            "Journaux SSH (auth.log) echecs d'authentification repetes",
+            "Alertes IDS sur force brute SSH"
+          ],
+          "risk": "medium",
+          "stop_conditions": [
+            "Verrouillage de compte detecte",
+            "Absence d'accord utilisateur pour la force brute"
+          ],
+          "requires_user_approval": true
+        }
+      ]
+    },
+    {
+      "id": "P6",
+      "name": "Lateral Movement",
+      "tactic": {
+        "id": "TA0008",
+        "name": "Lateral Movement"
+      },
+      "steps": [
+        {
+          "id": "S6.1",
+          "objective": "Se deplacer lateralement vers la cible via le service SSH (22/tcp) avec des identifiants obtenus.",
+          "technique": {
+            "id": "T1021.004",
+            "name": "Remote Services: SSH"
+          },
+          "services": [
+            "22/tcp"
+          ],
+          "cves": [
+            "CVE-2008-5161"
+          ],
+          "tools": [
+            "client SSH"
+          ],
+          "preconditions": [
+            "Identifiants valides obtenus (P5 reussi)",
+            "Accord utilisateur explicite pour mouvement lateral"
+          ],
+          "command": "ssh <utilisateur>@<target> uniquement si approuve",
+          "expected_evidence": [
+            "data/cves.json (entree CVE-2008-5161)"
+          ],
+          "detection": [
+            "Journaux SSH connexions entrantes sortantes anormales",
+            "Alertes sur deplacement lateral SSH"
+          ],
+          "risk": "medium",
+          "stop_conditions": [
+            "Identifiants refuses",
+            "Absence d'accord utilisateur pour le mouvement lateral"
+          ],
+          "requires_user_approval": true
+        }
+      ]
+    },
+    {
+      "id": "P7",
+      "name": "Collection",
+      "tactic": {
+        "id": "TA0009",
+        "name": "Collection"
+      },
+      "steps": [
+        {
+          "id": "S7.1",
+          "objective": "Interagir avec le service SMTP Postfix (25/tcp) : relais de courrier et contournement SPF via SMTP smuggling.",
+          "technique": {
+            "id": "T1190",
+            "name": "Exploit Public-Facing Application"
+          },
+          "services": [
+            "25/tcp"
+          ],
+          "cves": [
+            "CVE-2005-0337",
+            "CVE-2023-51764"
+          ],
+          "tools": [
+            "searchsploit",
+            "client SMTP"
+          ],
+          "preconditions": [
+            "Phase P1 terminee, service 25/tcp Postfix confirme",
+            "Accord utilisateur explicite pour interaction avec le service mail"
+          ],
+          "command": "searchsploit --json postfix ; test SMTP uniquement si approuve",
+          "expected_evidence": [
+            "evidence/raw/nmap-192.168.56.103-20261119T095751Z.xml",
+            "data/cves.json (entrees CVE-2005-0337, CVE-2023-51764)"
+          ],
+          "detection": [
+            "Journaux Postfix (mail.log) relais ou messages anomales",
+            "Alertes sur SMTP smuggling"
+          ],
+          "risk": "medium",
+          "stop_conditions": [
+            "Service 25/tcp indisponible",
+            "Absence d'accord utilisateur pour l'interaction mail"
+          ],
+          "requires_user_approval": true
+        }
+      ]
+    },
+    {
+      "id": "P8",
+      "name": "Impact",
+      "tactic": {
+        "id": "TA0040",
+        "name": "Impact"
+      },
+      "steps": [
+        {
+          "id": "S8.1",
+          "objective": "Degrader la disponibilite des services Samba (139/tcp, 445/tcp) par deni de service (boucle infinie, lecture memoire, crash).",
+          "technique": {
+            "id": "T1499",
+            "name": "Endpoint Denial of Service"
+          },
+          "services": [
+            "139/tcp",
+            "445/tcp"
+          ],
+          "cves": [
+            "CVE-2007-0452",
+            "CVE-2008-4314",
+            "CVE-2009-2906"
+          ],
+          "tools": [
+            "searchsploit",
+            "client SMB"
+          ],
+          "preconditions": [
+            "Phase P1 terminee, services Samba confirmes",
+            "Accord utilisateur explicite pour action destructive (disponibilite)"
+          ],
+          "command": "searchsploit --json samba denial of service ; test DoS uniquement si approuve",
+          "expected_evidence": [
+            "data/cves.json (entrees CVE-2007-0452, CVE-2008-4314, CVE-2009-2906)"
+          ],
+          "detection": [
+            "Indisponibilite des partages SMB",
+            "Journaux Samba crash/boucle, alertes disponibilite"
+          ],
+          "risk": "high",
+          "stop_conditions": [
+            "Impact sur la disponibilite au-dela du perimetre accepte",
+            "Absence d'accord utilisateur pour l'action destructive"
+          ],
+          "requires_user_approval": true
+        },
+        {
+          "id": "S8.2",
+          "objective": "Degrader la disponibilite du service telnetd (23/tcp) par dereferencement NULL (crash du demon).",
+          "technique": {
+            "id": "T1499",
+            "name": "Endpoint Denial of Service"
+          },
+          "services": [
+            "23/tcp"
+          ],
+          "cves": [
+            "CVE-2022-39028"
+          ],
+          "tools": [
+            "searchsploit",
+            "client telnet"
+          ],
+          "preconditions": [
+            "Phase P1 terminee, service 23/tcp telnetd confirme",
+            "Accord utilisateur explicite pour action destructive (disponibilite)"
+          ],
+          "command": "searchsploit --json telnetd NULL pointer ; test DoS uniquement si approuve",
+          "expected_evidence": [
+            "data/cves.json (entree CVE-2022-39028)"
+          ],
+          "detection": [
+            "Arret du demon telnetd, journaux inetd (boucle de service terminee)",
+            "Alertes disponibilite sur 23/tcp"
+          ],
+          "risk": "high",
+          "stop_conditions": [
+            "Service 23/tcp deja indisponible",
+            "Absence d'accord utilisateur pour l'action destructive"
+          ],
+          "requires_user_approval": true
+        }
+      ]
+    }
+  ],
+  "preconditions": [
+    "Cible 192.168.56.103 confirmee par l'utilisateur et consignee dans tracking.json",
+    "Reseau lab prive RFC1918 (192.168.56.0/24) uniquement",
+    "Preuves de reconnaissance disponibles : evidence/raw/nmap-*.xml, data/services.json, data/cves.json",
+    "Aucune action intrusive sans accord utilisateur explicite consigne"
+  ],
+  "assumptions": [
+    "Les versions de services dans data/services.json proviennent du scan nmap de T05",
+    "Les CVE de data/cves.json sont verifiees sur la NVD (source nvd) avec niveau de confiance",
+    "Les faux positifs signales dans data/cves.json sont excludes du plan d'exploitation",
+    "Les services sans CVE (111/tcp rpcbind, 512/tcp exec, 513/tcp login, 514/tcp shell) ne sont pas cibles d'exploitation dans ce plan"
+  ],
+  "stop_conditions": [
+    "Cible ou service hors perimetre lab (non 192.168.56.103 / 192.168.56.0/24)",
+    "Absence d'accord utilisateur pour toute etape requires_user_approval: true",
+    "Detection d'une reaction defensive bloquante (IDS/IPS, verrouillage de compte)",
+    "Version de service differente de celle referencee dans data/cves.json"
+  ],
+  "references": [
+    "https://attack.mitre.org/ (MITRE ATT&CK, version v20.1 verifiee le 2026-11-19)",
+    "https://nvd.nist.gov/ (National Vulnerability Database, source des CVE de data/cves.json)",
+    "data/services.json (inventaire des services, T05)",
+    "data/cves.json (correlation CVE, T07)",
+    "evidence/raw/nmap-192.168.56.103-20261119T095751Z.xml (preuve brute de reconnaissance)"
+  ]
+}

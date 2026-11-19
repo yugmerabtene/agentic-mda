@@ -1,0 +1,4 @@
+# Nmap 7.94SVN scan initiated Thu Nov 19 10:57:51 2026 as: nmap -Pn -sT -sV --version-all --max-retries 2 --host-timeout 60s --min-rate 1000 -oA evidence/raw/nmap-192.168.56.103-20261119T095751Z -p 1-1024 192.168.56.103
+Host: 192.168.56.103 ()	Status: Up
+Host: 192.168.56.103 ()	Ports: 21/open/tcp//ftp//vsftpd 2.3.4/, 22/open/tcp//ssh//OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)/, 23/open/tcp//telnet//Linux telnetd/, 25/open/tcp//smtp//Postfix smtpd/, 80/open/tcp//http//Apache httpd 2.2.8 ((Ubuntu) DAV|2)/, 111/open/tcp//rpcbind//2 (RPC #100000)/, 139/open/tcp//netbios-ssn//Samba smbd 3.X - 4.X (workgroup: WORKGROUP)/, 445/open/tcp//netbios-ssn//Samba smbd 3.X - 4.X (workgroup: WORKGROUP)/, 512/open/tcp//exec//netkit-rsh rexecd/, 513/open/tcp//login//OpenBSD or Solaris rlogind/, 514/open/tcp//shell//Netkit rshd/	Ignored State: closed (1013)
+# Nmap done at Thu Nov 19 10:58:03 2026 -- 1 IP address (1 host up) scanned in 11.35 seconds

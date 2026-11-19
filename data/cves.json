@@ -1,0 +1,1091 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-11-19T10:55:35Z",
+  "target": "192.168.56.103",
+  "source_services": "data/services.json",
+  "source_proof": "evidence/raw/nmap-192.168.56.103-20261119T095751Z.xml",
+  "target_os": "linux",
+  "cves": [
+    {
+      "id": "CVE-1999-0236",
+      "source": "nvd",
+      "source_url": "https://nvd.nist.gov/vuln/detail/CVE-1999-0236",
+      "cvss": 7.5,
+      "severity": "HIGH",
+      "confidence": "medium",
+      "confidence_motif": "produit/service mentionne dans la description CVE",
+      "services": [
+        "80/tcp"
+      ],
+      "matched_on": {
+        "query": "Apache httpd",
+        "product": "Apache httpd",
+        "version": "2.2.8",
+        "cpe": [
+          "cpe:/a:apache:http_server:2.2.8"
+        ]
+      },
+      "description": "ScriptAlias directory in NCSA and Apache httpd allowed attackers to read CGI programs.",
+      "references": [
+        "https://exchange.xforce.ibmcloud.com/vulnerabilities/CVE-1999-0236"
+      ],
+      "kev": false
+    },
+    {
+      "id": "CVE-2000-1195",
+      "source": "nvd",
+      "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2000-1195",
+      "cvss": 7.5,
+      "severity": "HIGH",
+      "confidence": "medium",
+      "confidence_motif": "produit/service mentionne dans la description CVE",
+      "services": [
+        "23/tcp"
+      ],
+      "matched_on": {
+        "query": "Linux telnetd",
+        "product": "Linux telnetd",
+        "version": null,
+        "cpe": [
+          "cpe:/o:linux:linux_kernel"
+        ]
+      },
+      "description": "telnet daemon (telnetd) from the Linux netkit package before netkit-telnet-0.16 allows remote attackers to bypass authentication when telnetd is running with the -L command line option.",
+      "references": [
+        "http://www.caldera.com/support/security/advisories/CSSA-2000-008.0.txt",
+        "https://exchange.xforce.ibmcloud.com/vulnerabilities/4225"
+      ],
+      "kev": false
+    },
+    {
+      "id": "CVE-2005-0337",
+      "source": "nvd",
+      "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2005-0337",
+      "cvss": 7.5,
+      "severity": "HIGH",
+      "confidence": "medium",
+      "confidence_motif": "produit/service mentionne dans la description CVE",
+      "services": [
+        "25/tcp"
+      ],
+      "matched_on": {
+        "query": "Postfix smtpd",
+        "product": "Postfix smtpd",
+        "version": null,
+        "cpe": [
+          "cpe:/a:postfix:postfix"
+        ]
+      },
+      "description": "Postfix 2.1.3, when /proc/net/if_inet6 is not available and permit_mx_backup is enabled in smtpd_recipient_restrictions, allows remote attackers to bypass e-mail restrictions and perform mail relaying by sending mail to an IPv6 hostname.",
+      "references": [
+        "http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=267837",
+        "http://marc.info/?l=bugtraq&m=110763358832637&w=2",
+        "http://secunia.com/advisories/14137/",
+        "http://www.redhat.com/support/errata/RHSA-2005-152.html",
+        "http://www.securityfocus.com/bid/12445",
+        "https://exchange.xforce.ibmcloud.com/vulnerabilities/19218",
+        "https://oval.cisecurity.org/repository/search/definition/oval%3Aorg.mitre.oval%3Adef%3A11339"
+      ],
+      "kev": false
+    },
+    {
+      "id": "CVE-2005-3630",
+      "source": "nvd",
+      "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2005-3630",
+      "cvss": 5.0,
+      "severity": "MEDIUM",
+      "confidence": "medium",
+      "confidence_motif": "produit/service mentionne dans la description CVE",
+      "services": [
+        "80/tcp"
+      ],
+      "matched_on": {
+        "query": "Apache httpd",
+        "product": "Apache httpd",
+        "version": "2.2.8",
+        "cpe": [
+          "cpe:/a:apache:http_server:2.2.8"
+        ]
+      },
+      "description": "Fedora Directory Server before 10 allows remote attackers to obtain sensitive information, such as the password from adm.conf via an IFRAME element, probably involving an Apache httpd.conf configuration that orders \"allow\" directives before \"deny\" directives.",
+      "references": [
+        "http://directory.fedora.redhat.com/wiki/FDS10Announcement",
+        "http://secunia.com/advisories/18939",
+        "http://www.securityfocus.com/bid/16729",
+        "https://bugzilla.redhat.com/bugzilla/attachment.cgi?id=121994",
+        "https://bugzilla.redhat.com/bugzilla/show_bug.cgi?id=174837"
+      ],
+      "kev": false
+    },
+    {
+      "id": "CVE-2006-4625",
+      "source": "nvd",
+      "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2006-4625",
+      "cvss": 3.6,
+      "severity": "LOW",
+      "confidence": "medium",
+      "confidence_motif": "produit/service mentionne dans la description CVE",
+      "services": [
+        "80/tcp"
+      ],
+      "matched_on": {
+        "query": "Apache httpd",
+        "product": "Apache httpd",
+        "version": "2.2.8",
+        "cpe": [
+          "cpe:/a:apache:http_server:2.2.8"
+        ]
+      },
+      "description": "PHP 4.x up to 4.4.4 and PHP 5 up to 5.1.6 allows local users to bypass certain Apache HTTP Server httpd.conf options, such as safe_mode and open_basedir, via the ini_restore function, which resets the values to their php.ini (Master Value) defaults.",
+      "references": [
+        "http://h20000.www2.hp.com/bizsupport/TechSupport/Document.jsp?lang=en&cc=us&objectID=c01056506",
+        "http://h20000.www2.hp.com/bizsupport/TechSupport/Document.jsp?lang=en&cc=us&objectID=c01086137",
+        "http://lists.suse.com/archive/suse-security-announce/2006-Oct/0002.html",
+        "http://secunia.com/advisories/22282",
+        "http://secunia.com/advisories/22331",
+        "http://secunia.com/advisories/22338",
+        "http://secunia.com/advisories/22424",
+        "http://secunia.com/advisories/25423",
+        "http://secunia.com/advisories/25850",
+        "http://securityreason.com/achievement_securityalert/42",
+        "http://securityreason.com/securityalert/1519",
+        "http://www.mandriva.com/security/advisories?name=MDKSA-2006:185",
+        "http://www.securityfocus.com/archive/1/445712/100/0/threaded",
+        "http://www.securityfocus.com/archive/1/445882/100/0/threaded",
+        "http://www.securityfocus.com/archive/1/448953/100/0/threaded",
+        "http://www.securityfocus.com/bid/19933",
+        "http://www.turbolinux.com/security/2006/TLSA-2006-38.txt",
+        "http://www.ubuntu.com/usn/usn-362-1",
+        "http://www.vupen.com/english/advisories/2007/1991",
+        "http://www.vupen.com/english/advisories/2007/2374",
+        "https://exchange.xforce.ibmcloud.com/vulnerabilities/28853"
+      ],
+      "kev": false
+    },
+    {
+      "id": "CVE-2007-0452",
+      "source": "nvd",
+      "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2007-0452",
+      "cvss": 6.8,
+      "severity": "MEDIUM",
+      "confidence": "medium",
+      "confidence_motif": "version mentionnee dans la description CVE",
+      "services": [
+        "139/tcp",
+        "445/tcp"
+      ],
+      "matched_on": {
+        "query": "Samba smbd 3",
+        "product": "Samba smbd",
+        "version": "3.X - 4.X",
+        "cpe": [
+          "cpe:/a:samba:samba"
+        ]
+      },
+      "description": "smbd in Samba 3.0.6 through 3.0.23d allows remote authenticated users to cause a denial of service (memory and CPU exhaustion) by renaming a file in a way that prevents a request from being removed from the deferred open queue, which triggers an infinite loop.",
+      "references": [
+        "ftp://patches.sgi.com/support/free/security/advisories/20070201-01-P.asc",
+        "http://fedoranews.org/cms/node/2579",
+        "http://fedoranews.org/cms/node/2580",
+        "http://h20000.www2.hp.com/bizsupport/TechSupport/Document.jsp?objectID=c00943462",
+        "http://lists.suse.com/archive/suse-security-announce/2007-Feb/0002.html",
+        "http://osvdb.org/33100",
+        "http://secunia.com/advisories/24021",
+        "http://secunia.com/advisories/24030",
+        "http://secunia.com/advisories/24046",
+        "http://secunia.com/advisories/24060",
+        "http://secunia.com/advisories/24067",
+        "http://secunia.com/advisories/24076",
+        "http://secunia.com/advisories/24101",
+        "http://secunia.com/advisories/24140",
+        "http://secunia.com/advisories/24145",
+        "http://secunia.com/advisories/24151",
+        "http://secunia.com/advisories/24188",
+        "http://secunia.com/advisories/24284",
+        "http://secunia.com/advisories/24792",
+        "http://securityreason.com/securityalert/2219",
+        "http://securitytracker.com/id?1017587",
+        "http://slackware.com/security/viewer.php?l=slackware-security&y=2007&m=slackware-security.476916",
+        "http://sunsolve.sun.com/search/document.do?assetkey=1-66-200588-1",
+        "http://us1.samba.org/samba/security/CVE-2007-0452.html",
+        "http://www.debian.org/security/2007/dsa-1257",
+        "http://www.gentoo.org/security/en/glsa/glsa-200702-01.xml",
+        "http://www.mandriva.com/security/advisories?name=MDKSA-2007:034",
+        "http://www.redhat.com/support/errata/RHSA-2007-0060.html",
+        "http://www.redhat.com/support/errata/RHSA-2007-0061.html",
+        "http://www.securityfocus.com/archive/1/459167/100/0/threaded",
+        "http://www.securityfocus.com/archive/1/459365/100/0/threaded",
+        "http://www.securityfocus.com/bid/22395",
+        "http://www.trustix.org/errata/2007/0007",
+        "http://www.ubuntu.com/usn/usn-419-1",
+        "http://www.vupen.com/english/advisories/2007/0483",
+        "http://www.vupen.com/english/advisories/2007/1278",
+        "https://exchange.xforce.ibmcloud.com/vulnerabilities/32301",
+        "https://issues.rpath.com/browse/RPL-1005",
+        "https://oval.cisecurity.org/repository/search/definition/oval%3Aorg.mitre.oval%3Adef%3A9758"
+      ],
+      "kev": false
+    },
+    {
+      "id": "CVE-2007-2444",
+      "source": "nvd",
+      "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2007-2444",
+      "cvss": 7.2,
+      "severity": "HIGH",
+      "confidence": "medium",
+      "confidence_motif": "version mentionnee dans la description CVE",
+      "services": [
+        "139/tcp",
+        "445/tcp"
+      ],
+      "matched_on": {
+        "query": "Samba smbd 3",
+        "product": "Samba smbd",
+        "version": "3.X - 4.X",
+        "cpe": [
+          "cpe:/a:samba:samba"
+        ]
+      },
+      "description": "Logic error in the SID/Name translation functionality in smbd in Samba 3.0.23d through 3.0.25pre2 allows local users to gain temporary privileges and execute SMB/CIFS protocol operations via unspecified vectors that cause the daemon to transition to the root user.",
+      "references": [
+        "http://h20000.www2.hp.com/bizsupport/TechSupport/Document.jsp?lang=en&cc=us&objectID=c01078980",
+        "http://lists.suse.com/archive/suse-security-announce/2007-May/0006.html",
+        "http://osvdb.org/34698",
+        "http://secunia.com/advisories/25232",
+        "http://secunia.com/advisories/25241",
+        "http://secunia.com/advisories/25246",
+        "http://secunia.com/advisories/25251",
+        "http://secunia.com/advisories/25255",
+        "http://secunia.com/advisories/25256",
+        "http://secunia.com/advisories/25259",
+        "http://secunia.com/advisories/25270",
+        "http://secunia.com/advisories/25289",
+        "http://secunia.com/advisories/25675",
+        "http://secunia.com/advisories/25772",
+        "http://security.gentoo.org/glsa/glsa-200705-15.xml",
+        "http://securityreason.com/securityalert/2701",
+        "http://slackware.com/security/viewer.php?l=slackware-security&y=2007&m=slackware-security.475906",
+        "http://sunsolve.sun.com/search/document.do?assetkey=1-26-102964-1",
+        "http://sunsolve.sun.com/search/document.do?assetkey=1-66-200588-1",
+        "http://www.debian.org/security/2007/dsa-1291",
+        "http://www.mandriva.com/security/advisories?name=MDKSA-2007:104",
+        "http://www.openpkg.com/security/advisories/OpenPKG-SA-2007.012.html",
+        "http://www.samba.org/samba/security/CVE-2007-2444.html",
+        "http://www.securityfocus.com/archive/1/468548/100/0/threaded",
+        "http://www.securityfocus.com/archive/1/468670/100/0/threaded",
+        "http://www.securityfocus.com/bid/23974",
+        "http://www.securitytracker.com/id?1018049",
+        "http://www.trustix.org/errata/2007/0017/",
+        "http://www.ubuntu.com/usn/usn-460-1",
+        "http://www.ubuntu.com/usn/usn-460-2",
+        "http://www.vupen.com/english/advisories/2007/1805",
+        "http://www.vupen.com/english/advisories/2007/2210",
+        "http://www.vupen.com/english/advisories/2007/2281",
+        "https://issues.rpath.com/browse/RPL-1366"
+      ],
+      "kev": false
+    },
+    {
+      "id": "CVE-2007-2446",
+      "source": "nvd",
+      "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2007-2446",
+      "cvss": 10.0,
+      "severity": "HIGH",
+      "confidence": "medium",
+      "confidence_motif": "version mentionnee dans la description CVE",
+      "services": [
+        "139/tcp",
+        "445/tcp"
+      ],
+      "matched_on": {
+        "query": "Samba smbd 3",
+        "product": "Samba smbd",
+        "version": "3.X - 4.X",
+        "cpe": [
+          "cpe:/a:samba:samba"
+        ]
+      },
+      "description": "Multiple heap-based buffer overflows in the NDR parsing in smbd in Samba 3.0.0 through 3.0.25rc3 allow remote attackers to execute arbitrary code via crafted MS-RPC requests involving (1) DFSEnum (netdfs_io_dfs_EnumInfo_d), (2) RFNPCNEX (smb_io_notify_option_type_data), (3) LsarAddPrivilegesToAccount (lsa_io_privilege_set), (4) NetSetFileSecurity (sec_io_acl), or (5) LsarLookupSids/LsarLookupSids2 (lsa_io_trans_names).",
+      "references": [
+        "http://docs.info.apple.com/article.html?artnum=306172",
+        "http://h20000.www2.hp.com/bizsupport/TechSupport/Document.jsp?lang=en&cc=us&objectID=c01067768",
+        "http://h20000.www2.hp.com/bizsupport/TechSupport/Document.jsp?lang=en&cc=us&objectID=c01078980",
+        "http://lists.apple.com/archives/security-announce//2007/Jul/msg00004.html",
+        "http://lists.grok.org.uk/pipermail/full-disclosure/2007-September/065902.html",
+        "http://lists.suse.com/archive/suse-security-announce/2007-May/0006.html",
+        "http://osvdb.org/34699",
+        "http://osvdb.org/34731",
+        "http://osvdb.org/34733",
+        "http://secunia.com/advisories/25232",
+        "http://secunia.com/advisories/25241",
+        "http://secunia.com/advisories/25246",
+        "http://secunia.com/advisories/25251",
+        "http://secunia.com/advisories/25255",
+        "http://secunia.com/advisories/25256",
+        "http://secunia.com/advisories/25257",
+        "http://secunia.com/advisories/25259",
+        "http://secunia.com/advisories/25270",
+        "http://secunia.com/advisories/25289",
+        "http://secunia.com/advisories/25391/",
+        "http://secunia.com/advisories/25567",
+        "http://secunia.com/advisories/25675",
+        "http://secunia.com/advisories/25772",
+        "http://secunia.com/advisories/26235",
+        "http://secunia.com/advisories/26909",
+        "http://secunia.com/advisories/27706",
+        "http://secunia.com/advisories/28292",
+        "http://security.gentoo.org/glsa/glsa-200705-15.xml",
+        "http://securityreason.com/securityalert/2702",
+        "http://slackware.com/security/viewer.php?l=slackware-security&y=2007&m=slackware-security.475906",
+        "http://sunsolve.sun.com/search/document.do?assetkey=1-26-102964-1",
+        "http://sunsolve.sun.com/search/document.do?assetkey=1-66-200588-1",
+        "http://www.debian.org/security/2007/dsa-1291",
+        "http://www.kb.cert.org/vuls/id/773720",
+        "http://www.mandriva.com/security/advisories?name=MDKSA-2007:104",
+        "http://www.openpkg.com/security/advisories/OpenPKG-SA-2007.012.html",
+        "http://www.osvdb.org/34732",
+        "http://www.redhat.com/support/errata/RHSA-2007-0354.html",
+        "http://www.samba.org/samba/security/CVE-2007-2446.html",
+        "http://www.securityfocus.com/archive/1/468542/100/0/threaded",
+        "http://www.securityfocus.com/archive/1/468670/100/0/threaded",
+        "http://www.securityfocus.com/archive/1/468672/100/0/threaded",
+        "http://www.securityfocus.com/archive/1/468673/100/0/threaded",
+        "http://www.securityfocus.com/archive/1/468674/100/0/threaded",
+        "http://www.securityfocus.com/archive/1/468675/100/0/threaded",
+        "http://www.securityfocus.com/archive/1/468680/100/0/threaded",
+        "http://www.securityfocus.com/bid/23973",
+        "http://www.securityfocus.com/bid/24195",
+        "http://www.securityfocus.com/bid/24196",
+        "http://www.securityfocus.com/bid/24197",
+        "http://www.securityfocus.com/bid/24198",
+        "http://www.securityfocus.com/bid/25159",
+        "http://www.securitytracker.com/id?1018050",
+        "http://www.trustix.org/errata/2007/0017/",
+        "http://www.ubuntu.com/usn/usn-460-1",
+        "http://www.vupen.com/english/advisories/2007/1805",
+        "http://www.vupen.com/english/advisories/2007/2079",
+        "http://www.vupen.com/english/advisories/2007/2210",
+        "http://www.vupen.com/english/advisories/2007/2281",
+        "http://www.vupen.com/english/advisories/2007/2732",
+        "http://www.vupen.com/english/advisories/2007/3229",
+        "http://www.vupen.com/english/advisories/2008/0050",
+        "http://www.xerox.com/downloads/usa/en/c/cert_XRX08_001.pdf",
+        "http://www.zerodayinitiative.com/advisories/ZDI-07-029.html",
+        "http://www.zerodayinitiative.com/advisories/ZDI-07-030.html",
+        "http://www.zerodayinitiative.com/advisories/ZDI-07-031.html",
+        "http://www.zerodayinitiative.com/advisories/ZDI-07-032.html",
+        "http://www.zerodayinitiative.com/advisories/ZDI-07-033.html",
+        "https://exchange.xforce.ibmcloud.com/vulnerabilities/34309",
+        "https://exchange.xforce.ibmcloud.com/vulnerabilities/34311",
+        "https://exchange.xforce.ibmcloud.com/vulnerabilities/34312",
+        "https://exchange.xforce.ibmcloud.com/vulnerabilities/34314",
+        "https://exchange.xforce.ibmcloud.com/vulnerabilities/34316",
+        "https://issues.rpath.com/browse/RPL-1366",
+        "https://oval.cisecurity.org/repository/search/definition/oval%3Aorg.mitre.oval%3Adef%3A11415"
+      ],
+      "kev": false
+    },
+    {
+      "id": "CVE-2007-2447",
+      "source": "nvd",
+      "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2007-2447",
+      "cvss": 6.0,
+      "severity": "MEDIUM",
+      "confidence": "medium",
+      "confidence_motif": "version mentionnee dans la description CVE",
+      "services": [
+        "139/tcp",
+        "445/tcp"
+      ],
+      "matched_on": {
+        "query": "Samba smbd 3",
+        "product": "Samba smbd",
+        "version": "3.X - 4.X",
+        "cpe": [
+          "cpe:/a:samba:samba"
+        ]
+      },
+      "description": "The MS-RPC functionality in smbd in Samba 3.0.0 through 3.0.25rc3 allows remote attackers to execute arbitrary commands via shell metacharacters involving the (1) SamrChangePassword function, when the \"username map script\" smb.conf option is enabled, and allows remote authenticated users to execute commands via shell metacharacters involving other MS-RPC functions in the (2) remote printer and (3) file share management.",
+      "references": [
+        "http://docs.info.apple.com/article.html?artnum=306172",
+        "http://h20000.www2.hp.com/bizsupport/TechSupport/Document.jsp?lang=en&cc=us&objectID=c01067768",
+        "http://h20000.www2.hp.com/bizsupport/TechSupport/Document.jsp?lang=en&cc=us&objectID=c01078980",
+        "http://labs.idefense.com/intelligence/vulnerabilities/display.php?id=534",
+        "http://lists.apple.com/archives/security-announce//2007/Jul/msg00004.html",
+        "http://lists.grok.org.uk/pipermail/full-disclosure/2007-September/065902.html",
+        "http://lists.suse.com/archive/suse-security-announce/2007-May/0006.html",
+        "http://secunia.com/advisories/25232",
+        "http://secunia.com/advisories/25241",
+        "http://secunia.com/advisories/25246",
+        "http://secunia.com/advisories/25251",
+        "http://secunia.com/advisories/25255",
+        "http://secunia.com/advisories/25256",
+        "http://secunia.com/advisories/25257",
+        "http://secunia.com/advisories/25259",
+        "http://secunia.com/advisories/25270",
+        "http://secunia.com/advisories/25289",
+        "http://secunia.com/advisories/25567",
+        "http://secunia.com/advisories/25675",
+        "http://secunia.com/advisories/25772",
+        "http://secunia.com/advisories/26083",
+        "http://secunia.com/advisories/26235",
+        "http://secunia.com/advisories/26909",
+        "http://secunia.com/advisories/27706",
+        "http://secunia.com/advisories/28292",
+        "http://security.gentoo.org/glsa/glsa-200705-15.xml",
+        "http://securityreason.com/securityalert/2700",
+        "http://slackware.com/security/viewer.php?l=slackware-security&y=2007&m=slackware-security.475906",
+        "http://sunsolve.sun.com/search/document.do?assetkey=1-26-102964-1",
+        "http://sunsolve.sun.com/search/document.do?assetkey=1-66-200588-1",
+        "http://www.debian.org/security/2007/dsa-1291",
+        "http://www.kb.cert.org/vuls/id/268336",
+        "http://www.mandriva.com/security/advisories?name=MDKSA-2007:104",
+        "http://www.novell.com/linux/security/advisories/2007_14_sr.html",
+        "http://www.openpkg.com/security/advisories/OpenPKG-SA-2007.012.html",
+        "http://www.osvdb.org/34700",
+        "http://www.redhat.com/support/errata/RHSA-2007-0354.html",
+        "http://www.samba.org/samba/security/CVE-2007-2447.html",
+        "http://www.securityfocus.com/archive/1/468565/100/0/threaded",
+        "http://www.securityfocus.com/archive/1/468670/100/0/threaded",
+        "http://www.securityfocus.com/bid/23972",
+        "http://www.securityfocus.com/bid/25159",
+        "http://www.securitytracker.com/id?1018051",
+        "http://www.trustix.org/errata/2007/0017/",
+        "http://www.ubuntu.com/usn/usn-460-1",
+        "http://www.vupen.com/english/advisories/2007/1805",
+        "http://www.vupen.com/english/advisories/2007/2079",
+        "http://www.vupen.com/english/advisories/2007/2210",
+        "http://www.vupen.com/english/advisories/2007/2281",
+        "http://www.vupen.com/english/advisories/2007/2732",
+        "http://www.vupen.com/english/advisories/2007/3229",
+        "http://www.vupen.com/english/advisories/2008/0050",
+        "http://www.xerox.com/downloads/usa/en/c/cert_XRX08_001.pdf",
+        "https://issues.rpath.com/browse/RPL-1366",
+        "https://oval.cisecurity.org/repository/search/definition/oval%3Aorg.mitre.oval%3Adef%3A10062",
+        "http://www.openwall.com/lists/oss-security/2025/10/16/2"
+      ],
+      "kev": false
+    },
+    {
+      "id": "CVE-2008-4314",
+      "source": "nvd",
+      "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2008-4314",
+      "cvss": 8.5,
+      "severity": "HIGH",
+      "confidence": "medium",
+      "confidence_motif": "version mentionnee dans la description CVE",
+      "services": [
+        "139/tcp",
+        "445/tcp"
+      ],
+      "matched_on": {
+        "query": "Samba smbd 3",
+        "product": "Samba smbd",
+        "version": "3.X - 4.X",
+        "cpe": [
+          "cpe:/a:samba:samba"
+        ]
+      },
+      "description": "smbd in Samba 3.0.29 through 3.2.4 might allow remote attackers to read arbitrary memory and cause a denial of service via crafted (1) trans, (2) trans2, and (3) nttrans requests, related to a \"cut&paste error\" that causes an improper bounds check to be performed.",
+      "references": [
+        "http://lists.opensuse.org/opensuse-security-announce/2008-12/msg00002.html",
+        "http://marc.info/?l=bugtraq&m=125003356619515&w=2",
+        "http://osvdb.org/50230",
+        "http://secunia.com/advisories/32813",
+        "http://secunia.com/advisories/32919",
+        "http://secunia.com/advisories/32951",
+        "http://secunia.com/advisories/32968",
+        "http://secunia.com/advisories/36281",
+        "http://slackware.com/security/viewer.php?l=slackware-security&y=2008&m=slackware-security.453684",
+        "http://sunsolve.sun.com/search/document.do?assetkey=1-26-249087-1",
+        "http://us1.samba.org/samba/ftp/patches/security/samba-3.0.32-CVE-2008-4314.patch",
+        "http://us1.samba.org/samba/security/CVE-2008-4314.html",
+        "http://www.redhat.com/archives/fedora-package-announce/2008-December/msg00021.html",
+        "http://www.redhat.com/archives/fedora-package-announce/2008-December/msg00141.html",
+        "http://www.securityfocus.com/bid/32494",
+        "http://www.securitytracker.com/id?1021287",
+        "http://www.ubuntu.com/usn/USN-680-1",
+        "http://www.vupen.com/english/advisories/2008/3277",
+        "http://www.vupen.com/english/advisories/2009/0067",
+        "http://www.vupen.com/english/advisories/2009/2245"
+      ],
+      "kev": false
+    },
+    {
+      "id": "CVE-2008-5161",
+      "source": "nvd",
+      "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2008-5161",
+      "cvss": 3.7,
+      "severity": "LOW",
+      "confidence": "high",
+      "confidence_motif": "produit/service et version exactes mentions dans la description CVE",
+      "services": [
+        "22/tcp"
+      ],
+      "matched_on": {
+        "query": "OpenSSH 4.7",
+        "product": "OpenSSH",
+        "version": "4.7p1 Debian 8ubuntu1",
+        "cpe": [
+          "cpe:/a:openbsd:openssh:4.7p1",
+          "cpe:/o:linux:linux_kernel"
+        ]
+      },
+      "description": "Error handling in the SSH protocol in (1) SSH Tectia Client and Server and Connector 4.0 through 4.4.11, 5.0 through 5.2.4, and 5.3 through 5.3.8; Client and Server and ConnectSecure 6.0 through 6.0.4; Server for Linux on IBM System z 6.0.4; Server for IBM z/OS 5.5.1 and earlier, 6.0.0, and 6.0.1; and Client 4.0-J through 4.3.3-J and 4.0-K through 4.3.10-K; and (2) OpenSSH 4.7p1 and possibly other versions, when using a block cipher algorithm in Cipher Block Chaining (CBC) mode, makes it easier for remote attackers to recover certain plaintext data from an arbitrary block of ciphertext in an SSH session via unknown vectors.",
+      "references": [
+        "http://isc.sans.org/diary.html?storyid=5366",
+        "http://kb.juniper.net/InfoCenter/index?page=content&id=JSA10705",
+        "http://lists.apple.com/archives/security-announce/2009/Nov/msg00000.html",
+        "http://marc.info/?l=bugtraq&m=125017764422557&w=2",
+        "http://openssh.org/txt/cbc.adv",
+        "http://osvdb.org/49872",
+        "http://osvdb.org/50035",
+        "http://osvdb.org/50036",
+        "http://rhn.redhat.com/errata/RHSA-2009-1287.html",
+        "http://secunia.com/advisories/32740",
+        "http://secunia.com/advisories/32760",
+        "http://secunia.com/advisories/32833",
+        "http://secunia.com/advisories/33121",
+        "http://secunia.com/advisories/33308",
+        "http://secunia.com/advisories/34857",
+        "http://secunia.com/advisories/36558",
+        "http://sunsolve.sun.com/search/document.do?assetkey=1-66-247186-1",
+        "http://support.apple.com/kb/HT3937",
+        "http://support.attachmate.com/techdocs/2398.html",
+        "http://support.avaya.com/elmodocs2/security/ASA-2008-503.htm",
+        "http://www.cpni.gov.uk/Docs/Vulnerability_Advisory_SSH.txt",
+        "http://www.kb.cert.org/vuls/id/958563",
+        "http://www.rtpro.yamaha.co.jp/RT/FAQ/Security/CPNI957037.html",
+        "http://www.securityfocus.com/archive/1/498558/100/0/threaded",
+        "http://www.securityfocus.com/archive/1/498579/100/0/threaded",
+        "http://www.securityfocus.com/bid/32319",
+        "http://www.securitytracker.com/id?1021235",
+        "http://www.securitytracker.com/id?1021236",
+        "http://www.securitytracker.com/id?1021382",
+        "http://www.ssh.com/company/news/article/953/",
+        "http://www.vupen.com/english/advisories/2008/3172",
+        "http://www.vupen.com/english/advisories/2008/3173",
+        "http://www.vupen.com/english/advisories/2008/3409",
+        "http://www.vupen.com/english/advisories/2009/1135",
+        "http://www.vupen.com/english/advisories/2009/3184",
+        "https://exchange.xforce.ibmcloud.com/vulnerabilities/46620",
+        "https://h20566.www2.hpe.com/portal/site/hpsc/public/kb/docDisplay?docId=emr_na-c05157667",
+        "https://kc.mcafee.com/corporate/index?page=content&id=SB10106",
+        "https://kc.mcafee.com/corporate/index?page=content&id=SB10163",
+        "https://oval.cisecurity.org/repository/search/definition/oval%3Aorg.mitre.oval%3Adef%3A11279"
+      ],
+      "kev": false
+    },
+    {
+      "id": "CVE-2009-1888",
+      "source": "nvd",
+      "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2009-1888",
+      "cvss": 5.8,
+      "severity": "MEDIUM",
+      "confidence": "medium",
+      "confidence_motif": "version mentionnee dans la description CVE",
+      "services": [
+        "139/tcp",
+        "445/tcp"
+      ],
+      "matched_on": {
+        "query": "Samba smbd 3",
+        "product": "Samba smbd",
+        "version": "3.X - 4.X",
+        "cpe": [
+          "cpe:/a:samba:samba"
+        ]
+      },
+      "description": "The acl_group_override function in smbd/posix_acls.c in smbd in Samba 3.0.x before 3.0.35, 3.1.x and 3.2.x before 3.2.13, and 3.3.x before 3.3.6, when dos filemode is enabled, allows remote attackers to modify access control lists for files via vectors related to read access to uninitialized memory.",
+      "references": [
+        "http://secunia.com/advisories/35539",
+        "http://secunia.com/advisories/35573",
+        "http://secunia.com/advisories/35606",
+        "http://secunia.com/advisories/36918",
+        "http://wiki.rpath.com/Advisories:rPSA-2009-0145",
+        "http://www.debian.org/security/2009/dsa-1823",
+        "http://www.mandriva.com/security/advisories?name=MDVSA-2009:196",
+        "http://www.samba.org/samba/ftp/patches/security/samba-3.0.34-CVE-2009-1888.patch",
+        "http://www.samba.org/samba/ftp/patches/security/samba-3.2.12-CVE-2009-1888.patch",
+        "http://www.samba.org/samba/ftp/patches/security/samba-3.3.5-CVE-2009-1888.patch",
+        "http://www.samba.org/samba/security/CVE-2009-1888.html",
+        "http://www.securityfocus.com/archive/1/507856/100/0/threaded",
+        "http://www.securityfocus.com/bid/35472",
+        "http://www.securitytracker.com/id?1022442",
+        "http://www.slackware.com/security/viewer.php?l=slackware-security&y=2009&m=slackware-security.521591",
+        "http://www.ubuntu.com/usn/USN-839-1",
+        "http://www.vupen.com/english/advisories/2009/1664",
+        "https://exchange.xforce.ibmcloud.com/vulnerabilities/51327",
+        "https://oval.cisecurity.org/repository/search/definition/oval%3Aorg.mitre.oval%3Adef%3A10790",
+        "https://oval.cisecurity.org/repository/search/definition/oval%3Aorg.mitre.oval%3Adef%3A7292"
+      ],
+      "kev": false
+    },
+    {
+      "id": "CVE-2009-2906",
+      "source": "nvd",
+      "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2009-2906",
+      "cvss": 4.0,
+      "severity": "MEDIUM",
+      "confidence": "medium",
+      "confidence_motif": "version mentionnee dans la description CVE",
+      "services": [
+        "139/tcp",
+        "445/tcp"
+      ],
+      "matched_on": {
+        "query": "Samba smbd 3",
+        "product": "Samba smbd",
+        "version": "3.X - 4.X",
+        "cpe": [
+          "cpe:/a:samba:samba"
+        ]
+      },
+      "description": "smbd in Samba 3.0 before 3.0.37, 3.2 before 3.2.15, 3.3 before 3.3.8, and 3.4 before 3.4.2 allows remote authenticated users to cause a denial of service (infinite loop) via an unanticipated oplock break notification reply packet.",
+      "references": [
+        "http://lists.apple.com/archives/security-announce/2010//Mar/msg00001.html",
+        "http://lists.opensuse.org/opensuse-security-announce/2009-10/msg00004.html",
+        "http://news.samba.org/releases/3.0.37/",
+        "http://news.samba.org/releases/3.2.15/",
+        "http://news.samba.org/releases/3.3.8/",
+        "http://news.samba.org/releases/3.4.2/",
+        "http://osvdb.org/58519",
+        "http://samba.org/samba/security/CVE-2009-2906.html",
+        "http://secunia.com/advisories/36893",
+        "http://secunia.com/advisories/36918",
+        "http://secunia.com/advisories/36937",
+        "http://secunia.com/advisories/36953",
+        "http://secunia.com/advisories/37428",
+        "http://slackware.com/security/viewer.php?l=slackware-security&y=2009&m=slackware-security.561439",
+        "http://sunsolve.sun.com/search/document.do?assetkey=1-77-1021111.1-1",
+        "http://support.apple.com/kb/HT4077",
+        "http://wiki.rpath.com/Advisories:rPSA-2009-0145",
+        "http://www.securityfocus.com/archive/1/507856/100/0/threaded",
+        "http://www.securityfocus.com/bid/36573",
+        "http://www.securitytracker.com/id?1022976",
+        "http://www.ubuntu.com/usn/USN-839-1",
+        "http://www.vupen.com/english/advisories/2009/2810",
+        "https://exchange.xforce.ibmcloud.com/vulnerabilities/53575",
+        "https://oval.cisecurity.org/repository/search/definition/oval%3Aorg.mitre.oval%3Adef%3A7090",
+        "https://oval.cisecurity.org/repository/search/definition/oval%3Aorg.mitre.oval%3Adef%3A9944",
+        "https://www.redhat.com/archives/fedora-package-announce/2009-October/msg00095.html",
+        "https://www.redhat.com/archives/fedora-package-announce/2009-October/msg00098.html"
+      ],
+      "kev": false
+    },
+    {
+      "id": "CVE-2010-0728",
+      "source": "nvd",
+      "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2010-0728",
+      "cvss": 8.5,
+      "severity": "HIGH",
+      "confidence": "medium",
+      "confidence_motif": "version mentionnee dans la description CVE",
+      "services": [
+        "139/tcp",
+        "445/tcp"
+      ],
+      "matched_on": {
+        "query": "Samba smbd 3",
+        "product": "Samba smbd",
+        "version": "3.X - 4.X",
+        "cpe": [
+          "cpe:/a:samba:samba"
+        ]
+      },
+      "description": "smbd in Samba 3.3.11, 3.4.6, and 3.5.0, when libcap support is enabled, runs with the CAP_DAC_OVERRIDE capability, which allows remote authenticated users to bypass intended file permissions via standard filesystem operations with any client.",
+      "references": [
+        "http://lists.samba.org/archive/samba-announce/2010/000211.html",
+        "http://www.samba.org/samba/history/samba-3.3.12.html",
+        "http://www.samba.org/samba/history/samba-3.4.7.html",
+        "http://www.samba.org/samba/history/samba-3.5.1.html",
+        "http://www.samba.org/samba/security/CVE-2010-0728",
+        "https://bugzilla.samba.org/show_bug.cgi?id=7222"
+      ],
+      "kev": false
+    },
+    {
+      "id": "CVE-2010-0926",
+      "source": "nvd",
+      "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2010-0926",
+      "cvss": 3.5,
+      "severity": "LOW",
+      "confidence": "medium",
+      "confidence_motif": "version mentionnee dans la description CVE",
+      "services": [
+        "139/tcp",
+        "445/tcp"
+      ],
+      "matched_on": {
+        "query": "Samba smbd 3",
+        "product": "Samba smbd",
+        "version": "3.X - 4.X",
+        "cpe": [
+          "cpe:/a:samba:samba"
+        ]
+      },
+      "description": "The default configuration of smbd in Samba before 3.3.11, 3.4.x before 3.4.6, and 3.5.x before 3.5.0rc3, when a writable share exists, allows remote authenticated users to leverage a directory traversal vulnerability, and access arbitrary files, by using the symlink command in smbclient to create a symlink containing .. (dot dot) sequences, related to the combination of the unix extensions and wide links options.",
+      "references": [
+        "http://archives.neohapsis.com/archives/fulldisclosure/2010-02/0083.html",
+        "http://archives.neohapsis.com/archives/fulldisclosure/2010-02/0107.html",
+        "http://archives.neohapsis.com/archives/fulldisclosure/2010-02/0108.html",
+        "http://blog.metasploit.com/2010/02/exploiting-samba-symlink-traversal.html",
+        "http://gitweb.samba.org/?p=samba.git%3Ba=commit%3Bh=bd269443e311d96ef495a9db47d1b95eb83bb8f4",
+        "http://lists.opensuse.org/opensuse-security-announce/2010-04/msg00001.html",
+        "http://lists.opensuse.org/opensuse-security-announce/2010-08/msg00001.html",
+        "http://marc.info/?l=full-disclosure&m=126538598820903&w=2",
+        "http://marc.info/?l=oss-security&m=126539592603079&w=2",
+        "http://marc.info/?l=oss-security&m=126540402215620&w=2",
+        "http://marc.info/?l=oss-security&m=126540733320471&w=2",
+        "http://marc.info/?l=oss-security&m=126545363428745&w=2",
+        "http://marc.info/?l=oss-security&m=126777580624790&w=2",
+        "http://marc.info/?l=samba-technical&m=126539387432412&w=2",
+        "http://marc.info/?l=samba-technical&m=126540011609753&w=2",
+        "http://marc.info/?l=samba-technical&m=126540100511357&w=2",
+        "http://marc.info/?l=samba-technical&m=126540248613395&w=2",
+        "http://marc.info/?l=samba-technical&m=126540277713815&w=2",
+        "http://marc.info/?l=samba-technical&m=126540290614053&w=2",
+        "http://marc.info/?l=samba-technical&m=126540376915283&w=2",
+        "http://marc.info/?l=samba-technical&m=126540475116511&w=2",
+        "http://marc.info/?l=samba-technical&m=126540477016522&w=2",
+        "http://marc.info/?l=samba-technical&m=126540539117328&w=2",
+        "http://marc.info/?l=samba-technical&m=126540608318301&w=2",
+        "http://marc.info/?l=samba-technical&m=126540695819735&w=2",
+        "http://marc.info/?l=samba-technical&m=126547903723628&w=2",
+        "http://marc.info/?l=samba-technical&m=126548356728379&w=2",
+        "http://marc.info/?l=samba-technical&m=126549111204428&w=2",
+        "http://marc.info/?l=samba-technical&m=126555346721629&w=2",
+        "http://secunia.com/advisories/39317",
+        "http://www.openwall.com/lists/oss-security/2010/02/06/3",
+        "http://www.openwall.com/lists/oss-security/2010/03/05/3",
+        "http://www.samba.org/samba/news/symlink_attack.html",
+        "https://bugzilla.redhat.com/show_bug.cgi?id=562568",
+        "https://bugzilla.samba.org/show_bug.cgi?id=7104"
+      ],
+      "kev": false
+    },
+    {
+      "id": "CVE-2011-2523",
+      "source": "nvd",
+      "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2011-2523",
+      "cvss": 9.8,
+      "severity": "CRITICAL",
+      "confidence": "high",
+      "confidence_motif": "produit/service et version exactes mentions dans la description CVE",
+      "services": [
+        "21/tcp"
+      ],
+      "matched_on": {
+        "query": "vsftpd 2.3.4",
+        "product": "vsftpd",
+        "version": "2.3.4",
+        "cpe": [
+          "cpe:/a:vsftpd:vsftpd:2.3.4"
+        ]
+      },
+      "description": "vsftpd 2.3.4 downloaded between 20110630 and 20110703 contains a backdoor which opens a shell on port 6200/tcp.",
+      "references": [
+        "http://packetstormsecurity.com/files/162145/vsftpd-2.3.4-Backdoor-Command-Execution.html",
+        "https://access.redhat.com/security/cve/cve-2011-2523",
+        "https://packetstormsecurity.com/files/102745/VSFTPD-2.3.4-Backdoor-Command-Execution.html",
+        "https://security-tracker.debian.org/tracker/CVE-2011-2523",
+        "https://vigilance.fr/vulnerability/vsftpd-backdoor-in-version-2-3-4-10805",
+        "https://www.openwall.com/lists/oss-security/2011/07/11/5"
+      ],
+      "kev": false
+    },
+    {
+      "id": "CVE-2020-8797",
+      "source": "nvd",
+      "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2020-8797",
+      "cvss": 6.7,
+      "severity": "MEDIUM",
+      "confidence": "medium",
+      "confidence_motif": "produit/service mentionne dans la description CVE",
+      "services": [
+        "23/tcp"
+      ],
+      "matched_on": {
+        "query": "Linux telnetd",
+        "product": "Linux telnetd",
+        "version": null,
+        "cpe": [
+          "cpe:/o:linux:linux_kernel"
+        ]
+      },
+      "description": "Juplink RX4-1500 v1.0.3 allows remote attackers to gain root access to the Linux subsystem via an unsanitized exec call (aka Command Line Injection), if the undocumented telnetd service is enabled and the attacker can authenticate as admin from the local network.",
+      "references": [
+        "https://cerne.xyz/bugs/CVE-2020-8797.html"
+      ],
+      "kev": false
+    },
+    {
+      "id": "CVE-2021-27171",
+      "source": "nvd",
+      "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2021-27171",
+      "cvss": 9.8,
+      "severity": "CRITICAL",
+      "confidence": "medium",
+      "confidence_motif": "produit/service mentionne dans la description CVE",
+      "services": [
+        "23/tcp"
+      ],
+      "matched_on": {
+        "query": "Linux telnetd",
+        "product": "Linux telnetd",
+        "version": null,
+        "cpe": [
+          "cpe:/o:linux:linux_kernel"
+        ]
+      },
+      "description": "An issue was discovered on FiberHome HG6245D devices through RP2613. It is possible to start a Linux telnetd as root on port 26/tcp by using the CLI interface commands of ddd and shell (or tshell).",
+      "references": [
+        "https://pierrekim.github.io/blog/2021-01-12-fiberhome-ont-0day-vulnerabilities.html#telnet-cli-privilege-escalation"
+      ],
+      "kev": false
+    },
+    {
+      "id": "CVE-2022-39028",
+      "source": "nvd",
+      "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2022-39028",
+      "cvss": 7.5,
+      "severity": "HIGH",
+      "confidence": "medium",
+      "confidence_motif": "produit/service mentionne dans la description CVE",
+      "services": [
+        "23/tcp"
+      ],
+      "matched_on": {
+        "query": "Linux telnetd",
+        "product": "Linux telnetd",
+        "version": null,
+        "cpe": [
+          "cpe:/o:linux:linux_kernel"
+        ]
+      },
+      "description": "telnetd in GNU Inetutils through 2.3, MIT krb5-appl through 1.0.3, and derivative works has a NULL pointer dereference via 0xff 0xf7 or 0xff 0xf8. In a typical installation, the telnetd application would crash but the telnet service would remain available through inetd. However, if the telnetd application has many crashes within a short time interval, the telnet service would become unavailable after inetd logs a \"telnet/tcp server failing (looping), service terminated\" error. NOTE: MIT krb5-appl is not supported upstream but is shipped by a few Linux distributions. The affected code was removed from the supported MIT Kerberos 5 (aka krb5) product many years ago, at version 1.8.",
+      "references": [
+        "https://git.hadrons.org/cgit/debian/pkgs/inetutils.git/commit/?id=113da8021710d871c7dd72d2a4d5615d42d64289",
+        "https://lists.debian.org/debian-lts-announce/2022/11/msg00033.html",
+        "https://lists.gnu.org/archive/html/bug-inetutils/2022-08/msg00002.html",
+        "https://pierrekim.github.io/blog/2022-08-24-2-byte-dos-freebsd-netbsd-telnetd-netkit-telnetd-inetutils-telnetd-kerberos-telnetd.html"
+      ],
+      "kev": false
+    },
+    {
+      "id": "CVE-2023-51764",
+      "source": "nvd",
+      "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2023-51764",
+      "cvss": 5.3,
+      "severity": "MEDIUM",
+      "confidence": "medium",
+      "confidence_motif": "produit/service mentionne dans la description CVE",
+      "services": [
+        "25/tcp"
+      ],
+      "matched_on": {
+        "query": "Postfix smtpd",
+        "product": "Postfix smtpd",
+        "version": null,
+        "cpe": [
+          "cpe:/a:postfix:postfix"
+        ]
+      },
+      "description": "Postfix through 3.8.5 allows SMTP smuggling unless configured with smtpd_data_restrictions=reject_unauth_pipelining and smtpd_discard_ehlo_keywords=chunking (or certain other options that exist in recent versions). Remote attackers can use a published exploitation technique to inject e-mail messages with a spoofed MAIL FROM address, allowing bypass of an SPF protection mechanism. This occurs because Postfix supports <LF>.<CR><LF> but some other popular e-mail servers do not. To prevent attack variants (by always disallowing <LF> without <CR>), a different solution is required, such as the smtpd_forbid_bare_newline=yes option with a Postfix minimum version of 3.5.23, 3.6.13, 3.7.9, 3.8.4, or 3.9.",
+      "references": [
+        "http://www.openwall.com/lists/oss-security/2023/12/24/1",
+        "http://www.openwall.com/lists/oss-security/2023/12/25/1",
+        "http://www.openwall.com/lists/oss-security/2024/05/09/3",
+        "https://access.redhat.com/security/cve/CVE-2023-51764",
+        "https://bugzilla.redhat.com/show_bug.cgi?id=2255563",
+        "https://fahrplan.events.ccc.de/congress/2023/fahrplan/events/11782.html",
+        "https://github.com/duy-31/CVE-2023-51764",
+        "https://github.com/eeenvik1/CVE-2023-51764",
+        "https://lists.debian.org/debian-lts-announce/2024/01/msg00020.html",
+        "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/JQ5WXFCW2N6G2PH3JXDTYW5PH5EBQEGO/",
+        "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/QRLF5SOS7TP5N7FQSEK2NFNB44ISVTZC/",
+        "https://lwn.net/Articles/956533/",
+        "https://sec-consult.com/blog/detail/smtp-smuggling-spoofing-e-mails-worldwide/",
+        "https://www.openwall.com/lists/oss-security/2024/01/22/1",
+        "https://www.postfix.org/announcements/postfix-3.8.5.html",
+        "https://www.postfix.org/smtp-smuggling.html",
+        "https://www.youtube.com/watch?v=V8KPV96g1To",
+        "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/JQ5WXFCW2N6G2PH3JXDTYW5PH5EBQEGO/",
+        "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/QRLF5SOS7TP5N7FQSEK2NFNB44ISVTZC/"
+      ],
+      "kev": false
+    }
+  ],
+  "unmatched_services": [
+    {
+      "port": 512,
+      "protocol": "tcp",
+      "service": "exec",
+      "product": "netkit-rsh rexecd",
+      "version": null,
+      "reason": "aucun CVE NVD pour ce produit/version"
+    },
+    {
+      "port": 513,
+      "protocol": "tcp",
+      "service": "login",
+      "product": "OpenBSD or Solaris rlogind",
+      "version": null,
+      "reason": "aucun CVE NVD pour ce produit/version"
+    },
+    {
+      "port": 514,
+      "protocol": "tcp",
+      "service": "shell",
+      "product": "Netkit rshd",
+      "version": null,
+      "reason": "aucun CVE NVD pour ce produit/version"
+    }
+  ],
+  "false_positives": [
+    {
+      "cve": "CVE-2007-4752",
+      "service": "22/tcp",
+      "product": "OpenSSH",
+      "version": "4.7p1 Debian 8ubuntu1",
+      "motif": "faux positif probable : version du service hors de la plage affectee par la CVE",
+      "description": "ssh in OpenSSH before 4.7 does not properly handle when an untrusted cookie cannot be created and uses a trusted X11 cookie instead, which allows attackers to violate intended policy and gain privileges by causing an X client to be treated as trusted.",
+      "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2007-4752",
+      "matched_on": {
+        "query": "OpenSSH 4.7"
+      }
+    },
+    {
+      "cve": "CVE-2010-4755",
+      "service": "22/tcp",
+      "product": "OpenSSH",
+      "version": "4.7p1 Debian 8ubuntu1",
+      "motif": "faux positif probable : CVE cible freebsd, alors que le service tourne sur Linux",
+      "description": "The (1) remote_glob function in sftp-glob.c and the (2) process_put function in sftp.c in OpenSSH 5.8 and earlier, as used in FreeBSD 7.3 and 8.1, NetBSD 5.0.2, OpenBSD 4.7, and other products, allow remote authenticated users to cause a denial of service (CPU and memory consumption) via crafted glob expressions that do not match any pathnames, as demonstrated by glob expressions in SSH_FXP_STAT requests to an sftp daemon, a different vulnerability than CVE-2010-2632.",
+      "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2010-4755",
+      "matched_on": {
+        "query": "OpenSSH 4.7"
+      }
+    },
+    {
+      "cve": "CVE-2004-0925",
+      "service": "25/tcp",
+      "product": "Postfix smtpd",
+      "version": null,
+      "motif": "faux positif probable : CVE cible mac os x, alors que le service tourne sur Linux",
+      "description": "Postfix on Mac OS X 10.3.x through 10.3.5, with SMTPD AUTH enabled, does not properly clear the username between authentication attempts, which allows users with the longest username to prevent other valid users from being able to authenticate.",
+      "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2004-0925",
+      "matched_on": {
+        "query": "Postfix smtpd"
+      }
+    },
+    {
+      "cve": "CVE-2024-27305",
+      "service": "25/tcp",
+      "product": "Postfix smtpd",
+      "version": null,
+      "motif": "faux positif probable : la CVE cible aiosmtpd, pas le service smtp",
+      "description": "aiosmtpd is a reimplementation of the Python stdlib smtpd.py based on asyncio. aiosmtpd is vulnerable to inbound SMTP smuggling. SMTP smuggling is a novel vulnerability based on not so novel interpretation differences of the SMTP protocol. By exploiting SMTP smuggling, an attacker may send smuggle/spoof e-mails with fake sender addresses, allowing advanced phishing attacks. This issue is also existed in other SMTP software like Postfix. With the right SMTP server constellation, an attacker can send spoofed e-mails to inbound/receiving aiosmtpd instances. This issue has been addressed in version 1.4.5. Users are advised to upgrade. There are no known workarounds for this vulnerability.",
+      "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2024-27305",
+      "matched_on": {
+        "query": "Postfix smtpd"
+      }
+    },
+    {
+      "cve": "CVE-1999-0071",
+      "service": "80/tcp",
+      "product": "Apache httpd",
+      "version": "2.2.8",
+      "motif": "faux positif probable : version du service hors de la plage affectee par la CVE",
+      "description": "Apache httpd cookie buffer overflow for versions 1.1.1 and earlier.",
+      "source_url": "https://nvd.nist.gov/vuln/detail/CVE-1999-0071",
+      "matched_on": {
+        "query": "Apache httpd"
+      }
+    },
+    {
+      "cve": "CVE-2000-1206",
+      "service": "80/tcp",
+      "product": "Apache httpd",
+      "version": "2.2.8",
+      "motif": "faux positif probable : version du service hors de la plage affectee par la CVE",
+      "description": "Vulnerability in Apache httpd before 1.3.11, when configured for mass virtual hosting using mod_rewrite, or mod_vhost_alias in Apache 1.3.9, allows remote attackers to retrieve arbitrary files.",
+      "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2000-1206",
+      "matched_on": {
+        "query": "Apache httpd"
+      }
+    },
+    {
+      "cve": "CVE-2002-1850",
+      "service": "80/tcp",
+      "product": "Apache httpd",
+      "version": "2.2.8",
+      "motif": "faux positif probable : la CVE cible des versions differentes de la version du service",
+      "description": "mod_cgi in Apache 2.0.39 and 2.0.40 allows local users and possibly remote attackers to cause a denial of service (hang and memory consumption) by causing a CGI script to send a large amount of data to stderr, which results in a read/write deadlock between httpd and the CGI script.",
+      "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2002-1850",
+      "matched_on": {
+        "query": "Apache httpd"
+      }
+    },
+    {
+      "cve": "CVE-2003-0249",
+      "service": "80/tcp",
+      "product": "Apache httpd",
+      "version": "2.2.8",
+      "motif": "faux positif probable : la CVE cible des versions differentes de la version du service",
+      "description": "PHP treats unknown methods such as \"PoSt\" as a GET request, which could allow attackers to intended access restrictions if PHP is running on a server that passes on all methods, such as Apache httpd 2.0, as demonstrated using a Limit directive.  NOTE: this issue has been disputed by the Apache security team, saying \"It is by design that PHP allows scripts to process any request method.  A script which does not explicitly verify the request method will hence be processed as normal for arbitrary methods.  It is therefore expected behaviour that one cannot implement per-method access control using the Apache configuration alone, which is the assumption made in this report.",
+      "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2003-0249",
+      "matched_on": {
+        "query": "Apache httpd"
+      }
+    },
+    {
+      "cve": "CVE-2004-0493",
+      "service": "80/tcp",
+      "product": "Apache httpd",
+      "version": "2.2.8",
+      "motif": "faux positif probable : la CVE cible des versions differentes de la version du service",
+      "description": "The ap_get_mime_headers_core function in Apache httpd 2.0.49 allows remote attackers to cause a denial of service (memory exhaustion), and possibly an integer signedness error leading to a heap-based buffer overflow on 64 bit systems, via long header lines with large numbers of space or tab characters.",
+      "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2004-0493",
+      "matched_on": {
+        "query": "Apache httpd"
+      }
+    },
+    {
+      "cve": "CVE-2004-2343",
+      "service": "80/tcp",
+      "product": "Apache httpd",
+      "version": "2.2.8",
+      "motif": "faux positif probable : version du service hors de la plage affectee par la CVE",
+      "description": "Apache HTTP Server 2.0.47 and earlier allows local users to bypass .htaccess file restrictions, as specified in httpd.conf with directives such as Deny From All, by using an ErrorDocument directive. NOTE: the vendor has disputed this issue, since the .htaccess mechanism is only intended to restrict external web access, and a local user already has the privileges to perform the same operations without using ErrorDocument",
+      "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2004-2343",
+      "matched_on": {
+        "query": "Apache httpd"
+      }
+    },
+    {
+      "cve": "CVE-2005-3352",
+      "service": "80/tcp",
+      "product": "Apache httpd",
+      "version": "2.2.8",
+      "motif": "faux positif probable : version du service hors de la plage affectee par la CVE",
+      "description": "Cross-site scripting (XSS) vulnerability in the mod_imap module of Apache httpd before 1.3.35-dev and Apache httpd 2.0.x before 2.0.56-dev allows remote attackers to inject arbitrary web script or HTML via the Referer when using image maps.",
+      "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2005-3352",
+      "matched_on": {
+        "query": "Apache httpd"
+      }
+    },
+    {
+      "cve": "CVE-2003-1070",
+      "service": "111/tcp",
+      "product": null,
+      "version": "2",
+      "motif": "faux positif probable : CVE cible solaris, alors que le service tourne sur Linux",
+      "description": "Unknown vulnerability in rpcbind for Solaris 2.6 through 9 allows remote attackers to cause a denial of service (rpcbind crash).",
+      "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2003-1070",
+      "matched_on": {
+        "query": "rpcbind 2"
+      }
+    }
+  ]
+}
